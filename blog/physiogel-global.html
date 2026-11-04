@@ -1,0 +1,236 @@
+<title>피지오겔 글로벌 리포트</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;800&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: single reading column; tool bar on top, chart card, then the copyable manuscript */
+:root{
+  --bg:#f3f7f8; --surface:#ffffff; --fg:#17262b; --muted:#5b6f75; --line:#d5e2e5;
+  --accent:#1f7a8c; --accent-soft:#e1f0f3; --warn:#9a5b12; --bar-other:#b9cdd2;
+  --display:"Noto Serif KR",Georgia,serif; --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1a1d; --surface:#16252a; --fg:#e3eef0; --muted:#97adb3; --line:#2a3e44;
+  --accent:#5cc0d3; --accent-soft:#1b3a41; --warn:#e2a95a; --bar-other:#3b5960; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1a1d; --surface:#16252a; --fg:#e3eef0; --muted:#97adb3; --line:#2a3e44;
+  --accent:#5cc0d3; --accent-soft:#1b3a41; --warn:#e2a95a; --bar-other:#3b5960; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.75;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 64px}
+.wrap{max-width:720px;margin:0 auto;display:grid;gap:20px}
+h1{font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1.35;margin:0;text-wrap:balance}
+.eyebrow{font-size:.75rem;letter-spacing:.08em;color:var(--accent);font-weight:700}
+.lede{color:var(--muted);margin:0}
+.tools{display:flex;flex-wrap:wrap;gap:8px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding-block:10px;z-index:5;border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+button{font:inherit;font-weight:700;font-size:.9rem;border-radius:10px;border:1px solid var(--accent);padding:10px 14px;cursor:pointer;background:var(--surface);color:var(--accent)}
+button.primary{background:var(--accent);color:var(--surface)}
+button:focus-visible{outline:3px solid var(--accent-soft);outline-offset:2px}
+.toast{font-size:.85rem;color:var(--accent);align-self:center;min-height:1.2em}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h2{font-family:var(--display);font-size:1.05rem;margin:0 0 4px}
+.small{font-size:.8rem;color:var(--muted)}
+.bars{display:grid;gap:10px;margin-top:12px}
+.bar-row{display:grid;grid-template-columns:7.5em 1fr;gap:10px;align-items:center;font-size:.85rem}
+.bar-track{position:relative;height:22px}
+.bar{height:100%;background:var(--bar-other);border-radius:0 4px 4px 0;min-width:3px}
+.bar.me{background:var(--accent)}
+.bar-val{position:absolute;top:0;left:calc(var(--w) + 6px);font-variant-numeric:tabular-nums;font-size:.8rem;line-height:22px;white-space:nowrap}
+.bar-row:nth-child(-n+2) .bar-val{left:auto;right:6px;color:var(--fg)}
+.post{white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;font-size:.95rem}
+.post-box{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.copybox{display:grid;gap:8px}
+.copybox .txt{background:var(--accent-soft);border-radius:10px;padding:12px;white-space:pre-wrap;word-break:keep-all}
+.note{border-left:3px solid var(--warn);padding:4px 0 4px 12px;color:var(--muted);font-size:.85rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <div>
+    <div class="eyebrow">네이버 블로그 원고 · 비교분석형 · 2026.11</div>
+    <h1>피지오겔 DMT 크림, 세계 더마 시장에서 어디쯤일까?</h1>
+    <p class="lede">글로벌 매출 비교 + 경쟁 크림 분석 원고입니다. 버튼을 누르면 제목·본문·태그가 따로 복사돼요.</p>
+  </div>
+
+  <div class="tools">
+    <button class="primary" id="copy-body" data-target="post">본문 전체 복사</button>
+    <button id="copy-title" data-target="title-txt">제목 복사</button>
+    <button id="copy-tags" data-target="tags-txt">태그 복사</button>
+    <span class="toast" id="toast" role="status"></span>
+  </div>
+
+  <div class="card">
+    <h2>더마 브랜드 연매출 비교 (원화 환산)</h2>
+    <div class="small">1유로≈1,600원, 1달러≈1,400원 단순 환산 · 브랜드별 공개 연도 다름 · 이 그래프를 캡처해 직접 만든 인포그래픽으로 쓰셔도 좋아요</div>
+    <div class="bars">
+      <div class="bar-row"><span>라로슈포제</span><div class="bar-track" style="--w:100%"><div class="bar" style="width:100%"></div><span class="bar-val">약 4.6조 (2024)</span></div></div>
+      <div class="bar-row"><span>세라비</span><div class="bar-track" style="--w:60%"><div class="bar" style="width:60%"></div><span class="bar-val">약 2.8조+ (2024)</span></div></div>
+      <div class="bar-row"><span>유세린·아쿠아퍼</span><div class="bar-track" style="--w:52%"><div class="bar" style="width:52%"></div><span class="bar-val">약 2.4조 (2025)</span></div></div>
+      <div class="bar-row"><span>갈더마 더마스킨케어<br>(세타필 등)</span><div class="bar-track" style="--w:44%"><div class="bar" style="width:44%"></div><span class="bar-val">약 2.0조 (2025)</span></div></div>
+      <div class="bar-row"><span>아벤느</span><div class="bar-track" style="--w:40%"><div class="bar" style="width:40%"></div><span class="bar-val">약 1.8조 (2025)</span></div></div>
+      <div class="bar-row"><span><b>피지오겔</b></span><div class="bar-track" style="--w:2.4%"><div class="bar me" style="width:2.4%"></div><span class="bar-val">약 0.11조 (2018, 인수 전)</span></div></div>
+    </div>
+  </div>
+
+  <div class="card copybox">
+    <h2>추천 제목</h2>
+    <div class="txt" id="title-txt">피지오겔 DMT 크림 글로벌 매출 비교｜라로슈포제·세라비·에스트라와 뭐가 다를까 (2026 정리)</div>
+    <div class="small">다른 제목 후보: ① 피지오겔 크림 MD크림일까? 성분·글로벌 순위·경쟁품 비교 ② LG생활건강 피지오겔, 세계 더마 1위들과 매출 비교해보니</div>
+  </div>
+
+  <div class="post-box">
+<div class="post" id="post">결론부터 말씀드릴게요. 피지오겔은 독일에서 태어나 2020년 LG생활건강이 GSK로부터 아시아·북미 사업권을 약 1,923억 원에 인수한 장벽 보습 브랜드입니다. 글로벌 매출은 라로슈포제의 수십 분의 1 수준이지만, 국내 보습장벽크림 10년 연속 1위(회사 발표)를 지킨 '작지만 깊은' 전문 브랜드예요.
+
+[사진 1: 직접 촬영한 피지오겔 DMT 크림 정면 사진]
+
+📌 3줄 요약
+1. 피지오겔 DMT 크림은 의료기기(MD크림)가 아닌 '더마 화장품'입니다.
+2. 세계 더마 시장 1위권(라로슈포제, 세라비)과 매출 차이는 약 25~40배입니다.
+3. 대신 피부 장벽 한 우물만 판 전문성과 아시아·북미 확장 여지가 강점입니다.
+
+
+■ 피지오겔은 어떤 브랜드인가요?
+
+피지오겔은 독일 피부과학 기업 스티펠(Stiefel)이 2000년에 출시한 브랜드입니다. 2009년 GSK가 스티펠을 인수하면서 GSK 소속이 되었고, 2020년 LG생활건강이 아시아와 북미 지역 사업권을 사들였어요. 인수 금액은 1억 2,500만 파운드, 우리 돈 약 1,923억 원이었습니다.
+
+인수 당시 피지오겔의 글로벌 매출은 약 1,100억 원(2018년)이었고, 그중 아시아 비중이 60%가 넘었습니다. 한국 매출만 30% 안팎이었다고 하니, 처음부터 '한국인이 키운 독일 크림'이라고 해도 과언이 아니죠.
+
+대표 제품은 DMT(Daily Moisture Therapy) 크림입니다. LG생활건강에 따르면 보습장벽크림 부문 10년 연속 1위, 누적 판매 1,300만 개를 넘겼다고 해요.
+
+[사진 2: 크림 제형을 손등에 덜어 촬영한 사진]
+
+
+■ 피지오겔, MD크림인가요? (가장 많이 하는 오해)
+
+결론: 피지오겔 DMT 크림은 MD크림이 아닙니다.
+
+· MD크림: 식약처 2등급 '의료기기' 허가 제품. 피부과 처방이 필요하고 임상으로 효능을 입증해야 합니다.
+· 피지오겔 DMT: 피부과·약국 유통으로 이름을 알린 '더마 화장품'. 처방 없이 올리브영, 온라인몰 등에서 살 수 있어요.
+
+예전부터 피부과와 약국에서 많이 권하다 보니 'MD크림'처럼 알려졌지만, 법적 분류는 화장품입니다. 아토피 등 증상이 심하다면 화장품보다 피부과 진료와 처방이 먼저예요.
+
+
+■ 성분과 기술: 무엇이 다른가요?
+
+피지오겔의 핵심은 피부 장벽의 라멜라 구조를 닮게 설계한 생체 모방 포뮬러(DMS 기술)입니다. DMT 크림 전성분에는 세라마이드엔피, 스쿠알란, 시어버터, 코코넛 오일, 글리세린 등이 들어 있어요.
+
+· 세라마이드: 피부 장벽의 '시멘트' 역할
+· 스쿠알란·시어버터: 수분 증발을 막는 보호막
+· 글리세린: 수분을 끌어당기는 보습 성분
+
+2024년에는 세라마이드·콜레스테롤·지방산을 장벽 지질 비율에 맞춰 조합하고 히알루론산을 리포좀으로 감싼 'DMT 리제너러티브 크림'도 나왔습니다.
+
+[사진 3: 직접 촬영한 제품 뒷면 전성분 표시]
+
+
+■ 세계 더마 시장은 얼마나 클까요?
+
+시장조사 기관마다 기준이 달라 2025년 세계 더마코스메틱 시장 규모는 약 390억~710억 달러(약 55조~99조 원)로 추정됩니다. 연평균 성장률은 7~10%로, 일반 화장품보다 빠르게 크는 분야예요.
+
+이 시장의 큰손은 프랑스·독일·스위스 기업입니다. 로레알의 더마 부문 매출만 2025년 72억 유로(약 11.5조 원)였어요.
+
+
+■ 글로벌 매출 비교 (원화 환산)
+
+※ 1유로≈1,600원, 1달러≈1,400원 단순 환산 / 브랜드마다 공개 연도가 다릅니다.
+
+1위 라로슈포제(로레알): 2024년 29억 유로 → 약 4.6조 원 (2025년 30억 유로 목표)
+2위 세라비(로레알): 2024년 20억 달러 이상 → 약 2.8조 원 이상
+3위 유세린·아쿠아퍼(바이어스도르프 더마): 2025년 15억 유로 → 약 2.4조 원
+4위 갈더마 더마 스킨케어(세타필 등): 2025년 14.5억 달러 → 약 2.0조 원
+5위 아벤느(피에르파브르): 2025년 11.5억 유로 → 약 1.8조 원
+· 피지오겔(LG생활건강): 2018년 글로벌 약 1,100억 원 (이후 브랜드 단독 매출 비공개)
+· 에스트라(아모레퍼시픽): 매출 비공개, 2025년 국내 더마 스킨케어 1위(유로모니터, 회사 발표)
+
+[사진 4: 위 표를 직접 정리한 인포그래픽 이미지]
+
+숫자로 보면 라로슈포제와 피지오겔은 약 40배 차이가 납니다. 이 격차는 '제품력'보다 '유통망' 차이에서 옵니다. 라로슈포제·세라비는 전 세계 약국과 대형 드럭스토어에 깔려 있고, 피지오겔은 아시아 중심이었거든요.
+
+
+■ LG생활건강에게 피지오겔이 중요한 이유
+
+LG생활건강의 2025년 매출은 6조 3,555억 원, 화장품 부문은 2조 3,500억 원으로 전년보다 16.5% 줄었습니다. 반면 해외 매출은 2조 1,377억 원으로 1.2% 늘었어요.
+
+중국 면세 중심 럭셔리 화장품이 주춤한 지금, 장벽 크림처럼 꾸준히 재구매되는 더마 브랜드가 반등 카드가 될 수 있습니다. 실제로 2026년 10월 피지오겔 비타민C 앰플은 누적 200만 병 출하, 9월 올리브영 매출은 전년 대비 약 2배를 기록했다고 해요. 세계 2대 시장인 북미 사업권을 가진 것도 큰 잠재력입니다.
+
+
+■ 경쟁 크림 4종 비교 (장벽 보습 기준)
+
+· 피지오겔 DMT 크림: 생체 모방 라멜라 구조 + 세라마이드 / 가볍게 스며드는 크림 / 건성·민감성 데일리용
+· 에스트라 아토베리어365 크림: 유사 세라마이드 '더마온' / 국내 더마 1위 / 속건조·민감성
+· 세라비 모이스춰라이징 크림: 세라마이드 3종 + 히알루론산 / 대용량 가성비 / 바디까지 함께
+· 라로슈포제 시카플라스트 밤 B5: 판테놀·마데카소사이드 / 진정 위주 / 자극 후 집중 케어
+
+[사진 5: 4개 제품을 나란히 놓고 직접 촬영한 비교 사진]
+[사진 6: 4개 제품 제형 비교 사진 (손등 발림성)]
+
+제 기준으로 정리하면 '매일 바르는 장벽 보습'은 피지오겔과 아토베리어, '온몸 가성비'는 세라비, '뒤집어진 피부 진정'은 시카플라스트가 맞습니다.
+
+
+■ 이런 분께 추천해요 / 비추천해요
+
+👍 추천
+· 계절이 바뀔 때마다 얼굴이 당기고 붉어지는 분
+· 향료 없는 순한 크림을 오래 쓰고 싶은 분
+· 아이와 함께 쓸 보습제를 찾는 분 (사용 전 팔 안쪽 테스트 권장)
+
+👎 비추천
+· 지성 피부라 리치한 크림이 부담스러운 분 → 로션 타입 추천
+· 아토피 진물·갈라짐 등 증상이 심한 분 → 피부과 진료 먼저
+
+[사진 7: 실제 사용 중인 화장대 또는 세안 후 바르는 장면]
+
+
+■ 자주 묻는 질문 (FAQ)
+
+Q. 피지오겔 크림은 실비 청구가 되나요?
+A. 아니요. 화장품이라 처방 대상이 아닙니다. 실비 청구는 의료기기로 허가된 MD크림을 처방받았을 때 가능한 경우가 있어요.
+
+Q. 피지오겔은 원래 어느 나라 브랜드인가요?
+A. 독일 스티펠이 만든 브랜드이고, 현재 아시아·북미 사업권은 LG생활건강이 가지고 있습니다.
+
+Q. DMT 크림과 로션 중 뭘 고를까요?
+A. 건성·겨울철엔 크림, 지성·여름철이나 넓은 부위엔 로션이 편합니다.
+
+
+■ 마무리
+
+피지오겔은 매출 규모로 보면 세계 1위 브랜드는 아닙니다. 하지만 25년 넘게 '피부 장벽' 하나만 판 브랜드이고, LG생활건강 인수 후 북미·아시아로 다시 뻗어 나가는 중이에요. 결국 좋은 크림의 기준은 "내 피부 문제를 해결해 주느냐"겠죠.
+
+[직접 작성: 내가 2주 이상 써본 솔직 후기 3~5줄 – 사용 기간, 피부 타입, 좋았던 점, 아쉬운 점]
+
+[사진 8: 사용 후 피부 결 또는 남은 용량 사진]
+
+※ 매출 수치는 각 사 실적 발표와 언론 보도 기준이며, 원화 환산은 단순 계산한 추정치입니다. 피지오겔 2018년 매출은 인수 당시 보도 기준이에요.
+
+📚 출처: LG생활건강 2025년 실적 공시, 로레알 2025 연례보고서, 바이어스도르프 2025 연간 실적, 갈더마 2025 연간 실적, 피에르파브르 2025 실적 보도, 아시아경제·서울경제·이데일리 인수 보도(2020), Cosmetics Business(2025)</div>
+  </div>
+
+  <div class="card copybox">
+    <h2>태그 (30개 이내)</h2>
+    <div class="txt" id="tags-txt">#피지오겔 #피지오겔크림 #피지오겔DMT #피지오겔DMT크림 #LG생활건강 #더마화장품 #장벽크림 #보습크림추천 #민감성피부크림 #건성피부크림 #MD크림 #라로슈포제 #세라비 #에스트라 #아토베리어365 #시카플라스트 #유세린 #아벤느 #세타필 #더마코스메틱 #세라마이드크림 #보습장벽크림 #크림비교</div>
+  </div>
+
+  <div class="card">
+    <h2>올리기 전 체크리스트</h2>
+    <div class="small" style="font-size:.88rem;line-height:1.8">
+      ✔ [사진 1~8] 자리에 직접 찍은 사진 8장 넣기 (타 사이트 캡처 금지)<br>
+      ✔ [직접 작성] 후기 부분을 내 경험으로 채우기 (AI 원문 그대로 발행 금지)<br>
+      ✔ 비교 크림 4종 아래에 네이버 쇼핑커넥트 링크 배치 (쿠팡 링크 남발 X)<br>
+      ✔ 발행 후 대량 수정 금지, 오타만 하루 2~3개 수정<br>
+      ✔ 제품 출시 정보·가격은 발행 직전 공식몰에서 한 번 더 확인
+    </div>
+  </div>
+
+  <div class="note">원문 출처 링크: LG생활건강 피지오겔 인수(아시아경제 2020.02), 로레알 2025 URD, Beiersdorf FY2025 보도자료, Galderma FY2025 실적, PremiumBeautyNews(피에르파브르 2025), Cosmetics Business(라로슈포제 30억 유로 목표), 한국면세뉴스(피지오겔 앰플 200만병, 2026.10)</div>
+</div>
+
+<script>
+const toast=document.getElementById('toast');
+function show(m){toast.textContent=m;clearTimeout(show.t);show.t=setTimeout(()=>toast.textContent='',2500)}
+function selectEl(el){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r)}
+document.querySelectorAll('button[data-target]').forEach(b=>b.addEventListener('click',()=>{
+  const el=document.getElementById(b.dataset.target);const text=el.innerText.trim();
+  const p=navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(text):Promise.reject();
+  p.then(()=>show('복사됐어요. 블로그에 붙여넣으세요.')).catch(()=>{selectEl(el);show('텍스트를 선택했어요. 길게 눌러 복사하세요.')});
+}));
+</script>
