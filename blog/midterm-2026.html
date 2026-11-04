@@ -1,0 +1,384 @@
+<title>중간선거 블루웨이브 리포트</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;800&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: single reading column; tool bar on top, chart card, then the copyable manuscript */
+:root{
+  --bg:#f3f7f8; --surface:#ffffff; --fg:#17262b; --muted:#5b6f75; --line:#d5e2e5;
+  --accent:#1f7a8c; --accent-soft:#e1f0f3; --warn:#9a5b12; --bar-other:#b9cdd2;
+  --display:"Noto Serif KR",Georgia,serif; --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1a1d; --surface:#16252a; --fg:#e3eef0; --muted:#97adb3; --line:#2a3e44;
+  --accent:#5cc0d3; --accent-soft:#1b3a41; --warn:#e2a95a; --bar-other:#3b5960; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1a1d; --surface:#16252a; --fg:#e3eef0; --muted:#97adb3; --line:#2a3e44;
+  --accent:#5cc0d3; --accent-soft:#1b3a41; --warn:#e2a95a; --bar-other:#3b5960; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.75;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 64px}
+.wrap{max-width:720px;margin:0 auto;display:grid;gap:20px}
+h1{font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1.35;margin:0;text-wrap:balance}
+.eyebrow{font-size:.75rem;letter-spacing:.08em;color:var(--accent);font-weight:700}
+.lede{color:var(--muted);margin:0}
+.tools{display:flex;flex-wrap:wrap;gap:8px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding-block:10px;z-index:5;border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+button{font:inherit;font-weight:700;font-size:.9rem;border-radius:10px;border:1px solid var(--accent);padding:10px 14px;cursor:pointer;background:var(--surface);color:var(--accent)}
+button.primary{background:var(--accent);color:var(--surface)}
+button:focus-visible{outline:3px solid var(--accent-soft);outline-offset:2px}
+.toast{font-size:.85rem;color:var(--accent);align-self:center;min-height:1.2em}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h2{font-family:var(--display);font-size:1.05rem;margin:0 0 4px}
+.small{font-size:.8rem;color:var(--muted)}
+.bars{display:grid;gap:10px;margin-top:12px}
+.bar-row{display:grid;grid-template-columns:7.5em 1fr;gap:10px;align-items:center;font-size:.85rem}
+.bar-track{position:relative;height:22px}
+.bar{height:100%;background:var(--bar-other);border-radius:0 4px 4px 0;min-width:3px}
+.bar.me{background:var(--accent)}
+.bar-val{position:absolute;top:0;left:calc(var(--w) + 6px);font-variant-numeric:tabular-nums;font-size:.8rem;line-height:22px;white-space:nowrap}
+.bar-row:nth-child(-n+3) .bar-val{left:auto;right:6px;color:var(--fg)}
+.post{white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;font-size:.95rem}
+.post-box{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.copybox{display:grid;gap:8px}
+.copybox .txt{background:var(--accent-soft);border-radius:10px;padding:12px;white-space:pre-wrap;word-break:keep-all}
+.note{border-left:3px solid var(--warn);padding:4px 0 4px 12px;color:var(--muted);font-size:.85rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <div>
+    <div class="eyebrow">제약바이오 투자인사이트 · techgamja 원고 · 2026.11.04</div>
+    <h1>미국 중간선거 블루웨이브, 내 주식은?</h1>
+    <p class="lede">검색 유입 급상승 키워드 '미국 중간선거'(▲41) 대응 원고입니다. 발행 직전 최종 개표 결과와 종가를 한 번 확인하세요.</p>
+  </div>
+
+  <div class="tools">
+    <button class="primary" id="copy-body" data-target="post">본문 전체 복사</button>
+    <button id="copy-title" data-target="title-txt">제목 복사</button>
+    <button id="copy-tags" data-target="tags-txt">태그 복사</button>
+    <span class="toast" id="toast" role="status"></span>
+  </div>
+
+  <div class="card">
+    <h2>원고 핵심 숫자</h2>
+    <div class="small">1950년 이후 중간선거 후 12개월 S&amp;P500 · 11월 4일 장중 기준</div>
+    <div class="bars">
+      <div class="bar-row"><span>19번 중 19번</span><div class="bar-track" style="--w:100%"><div class="bar me" style="width:100%"></div><span class="bar-val">중간선거 후 1년 상승</span></div></div>
+      <div class="bar-row"><span>평균 +16.6%</span><div class="bar-track" style="--w:66%"><div class="bar" style="width:66%"></div><span class="bar-val">이후 12개월 수익률</span></div></div>
+      <div class="bar-row"><span>블루웨이브 확률</span><div class="bar-track" style="--w:86%"><div class="bar" style="width:86%"></div><span class="bar-val">72% → 86%</span></div></div>
+    </div>
+  </div>
+
+  <div class="card copybox">
+    <h2>추천 제목</h2>
+    <div class="txt" id="title-txt">미국 중간선거 민주당 상·하원 싹쓸이 — 내 AI·제약바이오 주식은? 선거 후 1년, 역사는 19번 모두 올랐다</div>
+    <div class="small">다른 제목 후보: ① 블루웨이브에 코스피 3% 출렁, 미국 중간선거 결과와 업종별 승자·패자 총정리 ② 미국 중간선거 2026 결과, 제약바이오 약가는 바뀔까? 제약 영업 20년차의 분석</div>
+  </div>
+
+  <div class="post-box">
+<div class="post" id="post">안녕하세요! 10억 만들기에 도전하는 실전 투자 'techgamja'입니다.
+
+지난 글에서는 피지오겔로 세계 더마 시장을 정리했는데요. 오늘은 밤사이 전 세계 증시를 흔든 뉴스를 먼저 다루겠습니다.
+
+미국 중간선거에서 민주당이 하원에 이어 상원까지 가져가는 '블루웨이브'가 현실이 됐습니다.
+나스닥 선물은 한때 2% 가까이 빠졌고, 코스피는 장중 3% 넘게 밀렸다가 오후에 플러스로 돌아섰습니다.
+
+"내 AI 주식, 제약바이오 주식은 괜찮을까?"
+선거 결과부터 업종별 영향, 그리고 역사가 말해 주는 숫자까지 제약 영업 현장의 눈으로 정리해 드리겠습니다.
+
+※ 이 글은 2026년 11월 4일 오전(한국시간) 보도 기준입니다. 일부 의석은 아직 최종 확정 전입니다.
+
+[사진 1: 썸네일 – 네이비 제목 + 하단 사진]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. 숫자로 보는 선거 결과 — 하원도, 상원도 민주당
+
+11월 3일(현지시간) 치러진 중간선거에서 민주당이 하원 다수당을 확정했습니다.
+MS NOW, CNN, NBC, CBS 등 주요 방송사가 잇따라 민주당 승리를 발표했고, 일부 집계는 민주당 의석을 전체 435석 중 250석 이상으로 보고 있습니다.
+
+상원도 민주당 쪽으로 넘어갔습니다.
+CBS는 텍사스·사우스캐롤라이나·캔자스에서의 이변을 근거로 민주당의 상원 다수당을 전망했습니다.
+다만 알래스카·미시시피 등 일부 지역은 아직 결과가 나오지 않았고, AP통신의 최종 확정도 남아 있습니다.
+
+시장은 이미 이 결과를 어느 정도 예상하고 있었습니다.
+예측시장 칼시(Kalshi)에서 '상·하원 싹쓸이' 확률은 개표 전 72%에서 개표 시작 후 86%까지 올랐습니다.
+
+[사진 2: 블루웨이브 이미지]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+2. 밤사이 무슨 일이 — 급락 후 반등
+
+개표 초반 민주당 우세가 뚜렷해지자 미국 주가지수 선물이 일제히 떨어졌습니다.
+
+▶ S&amp;P500 선물 : 한때 -1.13%
+▶ 나스닥100 선물 : 한때 -2% 가까이
+▶ 이후 낙폭 축소 : 나스닥 선물 -0.3% 수준까지 회복
+
+우리 증시도 같은 흐름을 탔습니다.
+
+▶ 코스피 : 2.43% 오른 5,786.13에 출발 → 오후 1시 20분 5,461.93(-3.31%)까지 하락 → 오후 들어 낙폭을 모두 만회하고 0.2% 상승 전환
+▶ 삼성전자 장중 -4.33%, SK하이닉스 장중 -6.08%
+
+가장 크게 흔들린 건 반도체·AI였습니다.
+AI 데이터센터의 핵심 거점인 텍사스에서 민주당이 선전하면서 "데이터센터 규제가 강해질 수 있다"는 걱정이 번졌기 때문입니다.
+
+[사진 3: 급락 후 반등 차트 이미지]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3. 업종별 승자와 패자 — 월가는 이렇게 본다
+
+블루웨이브가 업종별로 미칠 영향에 대한 월가 분석을 정리했습니다.
+
+블루웨이브 업종별 영향 (11월 3~4일 월가 분석 기준)
+
+▶ AI·데이터센터 : 부담
+민주당이 데이터센터 세제 혜택을 줄일 수 있다는 우려. 다만 전국적인 건설 중단 가능성은 낮다는 평가.
+뱅크오브아메리카 : "AI 투자를 멈추진 않겠지만, 더 느리고 더 비싸게 만들 수 있다"
+UBS : 데이터센터 건설이 멈출 경우 2028년 예정 증설의 약 30%가 위험
+
+▶ 방산 : 부담
+록히드마틴·제너럴다이내믹스 약세. 골든돔 같은 대형 국방 사업에 의회가 제동을 걸 수 있다는 우려.
+
+▶ 헬스케어 : 수혜 가능
+방산은 누르고 헬스케어는 띄울 수 있다는 분석. 메디케이드 등 복지 예산 삭감이 늦춰질 가능성.
+
+▶ 금융·에너지·유틸리티 : 규제 부담
+규제 측면에서 가장 부정적인 평가를 받은 업종.
+
+▶ 소비 : 일부 지지
+푸드스탬프(SNAP)·메디케이드 삭감 지연이 소비를 받쳐 줄 수 있음.
+
+다만 월가의 기본 시나리오는 '교착(gridlock)'입니다.
+뱅크오브아메리카는 민주당이 대통령 거부권을 무력화할 의석(상원 3분의 2)이 없어, 당장 큰 정책 변화는 어렵다고 봤습니다.
+
+[사진 4: 업종별 승자·패자 이미지]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+4. 제약바이오 — 약가 정책은 바뀔까?
+
+제약업계 사람으로서 가장 궁금한 부분입니다. 결론부터 말씀드리면, 당장 크게 바뀌지는 않을 가능성이 높습니다.
+
+이유는 세 가지입니다.
+
+첫째, 약가 압박의 칼자루는 의회가 아니라 백악관에 있습니다.
+
+트럼프 행정부의 '최혜국 약가(MFN)' 협약에 이미 26개 제약사가 서명했고, 브랜드 의약품 시장의 약 90%를 덮고 있습니다.
+지난 글에서 다룬 머크(EMD 세로노)의 난임치료제 최대 84% 할인도 이 흐름 안에 있습니다.
+
+둘째, 관세 카드도 대통령 손에 있습니다.
+
+2026년 7월 31일부터 의약품에 최대 100% 관세(무역확장법 232조)가 시행됐고, MFN 협약을 맺은 회사는 관세를 피할 수 있는 구조입니다.
+
+셋째, 민주당이 원하는 건 'MFN'보다 '메디케어 약가 협상 확대'입니다.
+
+ING는 민주당이 트럼프식 MFN보다는 기존 메디케어 협상 방식을 선호한다고 분석했습니다.
+제약사 경영진들도 MFN 협약으로 불확실성이 줄었고 사업 영향은 제한적일 것이라고 밝혀 왔습니다.
+
+다만 남은 변수도 있습니다.
+미국 정부가 제안한 메디케어 가격 모델 GLOBE(파트B, 2026년 4분기)와 GUARD(파트D, 2027년 1분기)에 대해 미국제약협회(PhRMA)가 소송을 제기한 상태입니다.
+
+[사진 5: 약가 인하 계단 이미지]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+5. 역사는 뭐라고 할까 — 중간선거 후 1년, 19번 모두 올랐다
+
+선거 결과에 흔들릴 때일수록 숫자를 봐야 합니다.
+
+중간선거 후 증시 통계
+
+▶ S&amp;P500 : 1950년 이후 19번의 중간선거, 이후 12개월 동안 19번 모두 상승. 평균 +16.6%, 중간값 +16.3% (트레이딩뷰 데이터)
+▶ 더 긴 역사 : 1874년 이후 38번 중 32번 상승, 평균 +14% (로버트 실러 데이터 분석)
+▶ 대통령 소속 정당이 하원을 잃었을 때 : 1930년 이후 8번 중 5번, 그해 연말까지 상승 (네드 데이비스 리서치)
+▶ 코스피 : 1982~2022년 11번의 미국 중간선거 후 한 달 동안 8번 상승, 평균 +2.64% (한국일보 분석)
+
+US뱅크는 "어느 당이 이기는지는 증시 성과에 뚜렷한 영향이 없었다"고 분석했습니다.
+선거라는 불확실성이 사라지는 것 자체가 시장에는 호재였다는 뜻입니다.
+
+물론 예외도 있습니다.
+키움증권은 금리 인상기였던 2018년과 2022년에는 선거 후 반년간 오르다가 1년 뒤 상승분을 반납했다고 분석했습니다.
+19번이라는 표본은 작고, 과거가 미래를 보장하지는 않습니다.
+
+[사진 6: 19개 초록 막대 이미지]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+6. 제약 영업 20년차가 보는 체크포인트 3가지
+
+첫째, 약가는 대통령이, 예산은 의회가 쥡니다.
+
+약값을 깎는 MFN·관세는 그대로 갑니다.
+반면 메디케이드 같은 의료 예산은 의회가 지킬 가능성이 커졌습니다.
+약값은 내려가도 치료받는 환자 수는 유지된다는 뜻이고, 이는 지난 글의 난임치료제처럼 '가격 인하 + 물량 유지' 구조입니다.
+
+둘째, AI는 '멈춤'이 아니라 '속도 조절'입니다.
+
+데이터센터 세제 혜택 축소는 비용 문제이지 수요 문제가 아닙니다.
+다만 반도체 비중이 큰 우리 증시는 이런 뉴스에 더 크게 출렁인다는 점을 오늘 다시 확인했습니다.
+
+셋째, 진짜 승부는 2년 뒤입니다.
+
+캐피털 이코노믹스는 민주당의 상원 확보로, 다음 대선 이후 증세와 AI 규제가 통과될 가능성이 높아졌다고 봤습니다.
+오늘의 출렁임보다 2028년 대선까지의 정책 방향이 장기 투자자에게는 더 중요합니다.
+
+[사진 7: 2028년을 향한 지도/차트 이미지]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+7. techgamja의 10억 만들기 관점 정리
+
+선거 다음 날은 '팔고 싶은 날'이지만, 역사적으로는 '버틴 사람이 이긴 날'이었습니다.
+
+그래서 저는 이렇게 봅니다.
+
+보수적 투자자라면, 선거 결과로 포트폴리오를 바꾸지 마세요.
+S&amp;P500·나스닥 ETF 적립식 투자는 그대로 유지하는 것이 통계적으로 유리했습니다. 오히려 오늘 같은 급락은 정해 둔 날짜보다 조금 일찍 사는 기회로 쓸 수 있습니다.
+
+공격적 투자자라면, 두 가지를 체크하세요.
+① AI 인프라(데이터센터·전력·반도체) 비중이 높다면, 민주당의 데이터센터 세제 법안 뉴스를 꾸준히 확인하세요.
+② 헬스케어 비중이 낮다면, 이번 기회에 점검해 보세요. 약가 압박은 이미 가격에 반영되고 있고, 의료 예산은 지켜질 가능성이 커졌습니다.
+
+정치는 4년, 2년마다 바뀌지만 기업의 실적은 계속 쌓입니다.
+오늘의 뉴스보다 내 계좌의 원칙을 지키는 것이 10억으로 가는 가장 빠른 길입니다.
+
+[사진 8: 투자 관점 정리 마무리 이미지]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+분석이 도움 되셨다면 공감(❤️)과 이웃 추가 부탁드립니다!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+참고 자료 : CBS·NBC·Variety 중간선거 개표 보도(2026.11.3~4), 머니투데이·한국일보·한국경제TV 증시 보도(2026.11.4), CNBC·Yahoo Finance·Reuters 월가 반응(2026.11.3~4), 뱅크오브아메리카·UBS·캐피털 이코노믹스·ING 분석(언론 인용), CNBC 미국 약가 협약 보도(2026.8), 트레이딩뷰·모틀리풀·네드 데이비스 리서치·US뱅크·S&amp;P 인덱솔로지 중간선거 통계
+
+글쓴이는 제약 업계 종사자이며, 이 글은 소속 회사의 입장과 무관한 개인 의견입니다.
+
+[필독] 본 포스팅은 산업과 시장 동향에 대한 분석 및 정보 제공이 목적이며, 특정 종목의 매수·매도 추천이 아닙니다. 선거 결과와 수치는 작성 시점 보도 기준으로, 최종 개표 결과와 다를 수 있습니다. 과거 수익률은 미래 수익을 보장하지 않습니다. 투자 판단과 그에 따른 결과는 투자자 본인에게 책임이 있습니다.</div>
+  </div>
+
+  <div class="card copybox">
+    <h2>태그</h2>
+    <div class="txt" id="tags-txt">#미국중간선거 #중간선거 #미국중간선거2026 #중간선거결과 #블루웨이브 #민주당 #미국증시 #나스닥 #코스피 #S&P500 #AI주식 #데이터센터 #반도체주 #제약바이오 #제약바이오투자 #약가인하 #최혜국약가 #헬스케어투자 #방산주 #ETF #10억만들기 #재테크 #techgamja #테크감자</div>
+  </div>
+
+  <div class="card copybox">
+    <h2>Gemini 이미지 프롬프트</h2>
+    <div class="note">사진마다 Gemini <b>새 채팅</b> → 적힌 참고 이미지 첨부 → 프롬프트 붙여넣기. 실제 정치인 얼굴·성조기·정당 로고는 넣지 않도록 했습니다. AI 이미지에는 "AI 활용" 표시를 붙여 주세요.</div>
+
+    <h2 style="margin-top:10px">사진 1 · 썸네일 (1:1) <span class="small">첨부: 지난 썸네일</span></h2>
+    <div class="txt" id="p1">Use the attached image as the layout and style reference. Create a new square 1:1 blog thumbnail with exactly the same structure, fonts, colors and mascot as the reference. Only change the title text and the bottom photo.
+
+TOP HALF: the same solid deep navy background. On the left, very large extra-bold white Korean sans-serif text in three left-aligned lines, same size and weight as the reference:
+"美 중간선거"
+"블루웨이브,"
+"내 주식은?"
+On the right, the same mascot character as in the reference, unchanged (cartoon potato with round glasses, headset microphone, navy suit, yellow tie and name badge, holding a tablet and giving a thumbs-up), with the same small bold white "techgamja" text beside it.
+
+The same thin bright green horizontal line separates the two halves.
+
+BOTTOM HALF: a cinematic, softly dark photo in the same mood as the reference: the dome of a classical government capitol building at night, lit in deep blue light, with a blurred glowing stock-market ticker board and a falling-then-rising line chart reflected in a window in the foreground, shallow depth of field.
+Over the lower part of the photo, keep the same huge extra-bold white Korean text with a subtle dark shadow, in two left-aligned lines exactly as in the reference:
+"테크감자의 10억"
+"만드는 현실 재테크"
+
+No other text, no flags, no real people, no logos.</div>
+    <button id="cp1" data-target="p1">썸네일 프롬프트 복사</button>
+
+    <h2 style="margin-top:10px">사진 2 · 블루웨이브 <span class="small">1번 단락</span></h2>
+    <div class="small">첨부할 참고 이미지: <b>C · 네이비 세계지도 (초록 점과 화살표)</b></div>
+    <div class="txt" id="p2">Use the attached image as the style and layout reference. Create a new 16:9 image with the same look: same background, lighting, color tone, camera angle and minimal composition. Keep the mascot in the top-right corner exactly as in the reference (same character, same size, same position) with the same "techgamja" text below it. Only change the objects as described below.
+
+Objects: replace the world map with a simple glowing illustration on the same dark navy background: the silhouette of a classical capitol dome in the center, with a large stylized blue wave of light rising behind it from left to right, small glowing blue dots scattered like a map grid.
+
+No other text, no numbers, no flags, no real politicians, no logos.</div>
+    <button id="cp2" data-target="p2">사진 2 프롬프트 복사</button>
+
+    <h2 style="margin-top:10px">사진 3 · 급락 후 반등 차트 <span class="small">2번 단락</span></h2>
+    <div class="small">첨부할 참고 이미지: <b>C · 네이비 세계지도 (초록 점과 화살표)</b></div>
+    <div class="txt" id="p3">Use the attached image as the style and layout reference. Create a new 16:9 image with the same look: same background, lighting, color tone, camera angle and minimal composition. Keep the mascot in the top-right corner exactly as in the reference (same character, same size, same position) with the same "techgamja" text below it. Only change the objects as described below.
+
+Objects: replace the world map with a clean glowing line chart on the same dark navy background: the line drops sharply in red in the middle, then rebounds in bright green back above the starting level on the right, forming a clear V shape, faint grid lines behind it.
+
+No other text, no numbers, no flags, no real politicians, no logos.</div>
+    <button id="cp3" data-target="p3">사진 3 프롬프트 복사</button>
+
+    <h2 style="margin-top:10px">사진 4 · 업종별 승자·패자 <span class="small">3번 단락</span></h2>
+    <div class="small">첨부할 참고 이미지: <b>B · 일렬 플랫레이 (튜브·캡슐·알약·주사기)</b></div>
+    <div class="txt" id="p4">Use the attached image as the style and layout reference. Create a new 16:9 image with the same look: same background, lighting, color tone, camera angle and minimal composition. Keep the mascot in the top-right corner exactly as in the reference (same character, same size, same position) with the same "techgamja" text below it. Only change the objects as described below.
+
+Objects: on the same plain white background, five small miniature objects evenly spaced in one straight horizontal row: a tiny black server rack, a small grey model fighter jet, a white pill bottle, a miniature oil barrel, and a small classical bank building model. Above the first two and the oil barrel, small red downward arrows; above the pill bottle, a small green upward arrow.
+
+No other text, no numbers, no flags, no real politicians, no logos.</div>
+    <button id="cp4" data-target="p4">사진 4 프롬프트 복사</button>
+
+    <h2 style="margin-top:10px">사진 5 · 약가 인하 계단 <span class="small">4번 단락</span></h2>
+    <div class="small">첨부할 참고 이미지: <b>A · 계단 이미지 (펜 3개가 블록 계단 위)</b></div>
+    <div class="txt" id="p5">Use the attached image as the style and layout reference. Create a new 16:9 image with the same look: same background, lighting, color tone, camera angle and minimal composition. Keep the mascot in the top-right corner exactly as in the reference (same character, same size, same position) with the same "techgamja" text below it. Only change the objects as described below.
+
+Objects: on the same white tabletop by the window, matte white blocks stepping DOWN from left to right (the reverse of the reference stairs). On each block stands a plain white medicine bottle with a pale blue cap, and a small pale blue and white medicine box with a blank label sits on the highest block on the left.
+
+No other text, no numbers, no flags, no real politicians, no logos.</div>
+    <button id="cp5" data-target="p5">사진 5 프롬프트 복사</button>
+
+    <h2 style="margin-top:10px">사진 6 · 19번 모두 상승 <span class="small">5번 단락</span></h2>
+    <div class="small">첨부할 참고 이미지: <b>C · 네이비 세계지도 (초록 점과 화살표)</b></div>
+    <div class="txt" id="p6">Use the attached image as the style and layout reference. Create a new 16:9 image with the same look: same background, lighting, color tone, camera angle and minimal composition. Keep the mascot in the top-right corner exactly as in the reference (same character, same size, same position) with the same "techgamja" text below it. Only change the objects as described below.
+
+Objects: replace the world map with a clean glowing bar chart on the same dark navy background: 19 vertical bars in a row, all bright green and all above a thin horizontal zero line, with different heights, faint grid lines behind them.
+
+No other text, no numbers, no flags, no real politicians, no logos.</div>
+    <button id="cp6" data-target="p6">사진 6 프롬프트 복사</button>
+
+    <h2 style="margin-top:10px">사진 7 · 2028년을 향한 지도 <span class="small">6번 단락</span></h2>
+    <div class="small">첨부할 참고 이미지: <b>C · 네이비 세계지도 (초록 점과 화살표)</b></div>
+    <div class="txt" id="p7">Use the attached image as the style and layout reference. Create a new 16:9 image with the same look: same background, lighting, color tone, camera angle and minimal composition. Keep the mascot in the top-right corner exactly as in the reference (same character, same size, same position) with the same "techgamja" text below it. Only change the objects as described below.
+
+Objects: on the same dark navy world map, focus on North America: glowing blue dots across the United States, and a single glowing green arrow curving upward from the present toward the right edge of the image, suggesting the road to the next election. Remove other arrows from the reference.
+
+No other text, no numbers, no flags, no real politicians, no logos.</div>
+    <button id="cp7" data-target="p7">사진 7 프롬프트 복사</button>
+
+    <h2 style="margin-top:10px">사진 8 · 투자 관점 마무리 <span class="small">7번 단락</span></h2>
+    <div class="small">첨부할 참고 이미지: <b>C · 네이비 세계지도 (초록 점과 화살표)</b></div>
+    <div class="txt" id="p8">Use the attached image as the style and layout reference. Create a new 16:9 image with the same look: same background, lighting, color tone, camera angle and minimal composition. Keep the mascot in the top-right corner exactly as in the reference (same character, same size, same position) with the same "techgamja" text below it. Only change the objects as described below.
+
+Objects: replace the world map with a calm scene on the same dark navy background: a softly lit desk with a closed laptop, a small potted plant and a glowing green long-term upward line chart floating faintly behind them, a peaceful long-term investing mood.
+
+No other text, no numbers, no flags, no real politicians, no logos.</div>
+    <button id="cp8" data-target="p8">사진 8 프롬프트 복사</button>
+
+    <h2 style="margin-top:10px">고칠 때 이어서 보낼 문장</h2>
+    <div class="small" style="font-size:.88rem;line-height:1.8">
+    · 글자가 틀렸을 때: <code>Keep everything the same, only fix the Korean title text exactly as written.</code><br>
+    · 캐릭터가 다를 때: <code>Keep everything the same, but make the mascot identical to the one in the reference image.</code><br>
+    · 구도가 많이 다를 때: <code>Follow the composition of the reference image more closely.</code>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>발행 전 체크리스트</h2>
+    <div class="small" style="font-size:.88rem;line-height:1.8">
+      ✔ AP 최종 확정 여부와 상원 의석수 확인 후 1번 단락 숫자 업데이트<br>
+      ✔ 2번 단락 코스피 종가, 미국 4일 장 마감 결과로 업데이트 (현재는 장중 수치)<br>
+      ✔ 첫 단락 "지난 글" 연결 문장이 실제 직전 발행 글과 맞는지 확인<br>
+      ✔ 시의성 글이라 오늘~내일 중 발행 (검색 유입은 1~3일이 최고점)<br>
+      ✔ 발행 후 대량 수정 금지, 숫자 업데이트는 1~2회만
+    </div>
+  </div>
+
+  <div class="note">원문 출처: CBS·NBC·Variety·Northeastern 개표 보도, 머니투데이(나스닥 선물 급락), 한국일보(코스피 11번 중 8번), 네이트/뉴시스(낙폭 축소), Yahoo Finance·Reuters·CNBC(월가 반응·업종 영향), CNBC(약가 협약 2026.8), KuCoin/TradingView·Motley Fool·US Bank·S&amp;P Indexology(중간선거 통계)</div>
+</div>
+
+<script>
+const toast=document.getElementById('toast');
+function show(m){toast.textContent=m;clearTimeout(show.t);show.t=setTimeout(()=>toast.textContent='',2500)}
+function selectEl(el){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r)}
+document.querySelectorAll('button[data-target]').forEach(b=>b.addEventListener('click',()=>{
+  const el=document.getElementById(b.dataset.target);const text=el.innerText.trim();
+  const p=navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(text):Promise.reject();
+  p.then(()=>show('복사됐어요. 블로그에 붙여넣으세요.')).catch(()=>{selectEl(el);show('텍스트를 선택했어요. 길게 눌러 복사하세요.')});
+}));
+</script>
