@@ -86,7 +86,7 @@ button:focus-visible{outline:3px solid var(--accent-soft);outline-offset:2px}
 
 세계 더마 1위 라로슈포제와 매출을 나란히 놓고, LG생활건강 투자 관점까지 정리해 드리겠습니다.
 
-[사진 1: 직접 촬영한 피지오겔 DMT 크림 정면 사진]
+[사진 1: 썸네일 – 네이비 제목 + 하단 감성 사진]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -139,7 +139,7 @@ DMT 크림의 주요 성분은 역할에 따라 세 가지로 나눠 볼 수 있
 
 2024년에는 세라마이드·콜레스테롤·지방산을 장벽 지질 비율로 조합하고, 히알루론산을 리포좀으로 감싼 'DMT 리제너러티브 크림'도 출시됐습니다.
 
-[사진 3: 직접 촬영한 제품 뒷면 전성분 표시]
+[사진 3: 피부 장벽 구조 이미지 / 제품 뒷면 전성분 사진]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -172,7 +172,7 @@ DMT 크림의 주요 성분은 역할에 따라 세 가지로 나눠 볼 수 있
 ▶ 에스트라 (아모레퍼시픽)
 매출 비공개, 2025년 국내 더마 스킨케어 1위(유로모니터, 회사 발표)
 
-[사진 4: 위 매출 비교를 직접 정리한 인포그래픽]
+[사진 4: 매출 순위 계단 이미지 (또는 매출 그래프 캡처)]
 
 라로슈포제와 피지오겔의 차이는 약 40배입니다.
 
@@ -227,7 +227,7 @@ LG생활건강은 아시아뿐 아니라 북미 사업권도 갖고 있습니다
 화려한 성장보다 경기에 덜 흔들리는 안정성이 장점입니다.
 바이어스도르프 더마 부문이 5년 연속 두 자릿수 성장한 것도 같은 맥락입니다.
 
-[사진 7: 약국에서 드럭스토어로 바뀐 판매 채널 이미지]
+[사진 7: 아시아→북미 확장 지도 이미지]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -273,46 +273,58 @@ LG생활건강의 2025년 매출은 6조 3,555억 원(-6.7%), 영업이익은 1,
   </div>
 
   <div class="card copybox">
-    <h2>Gemini 이미지 프롬프트 (사진 1~8)</h2>
-    <div class="note">실제 브랜드 로고, 전성분, 4종 실물 비교는 AI로 만들면 사실과 다른 이미지가 됩니다. <b>📷 직접 촬영</b> 표시된 자리는 실물 사진을 쓰시고, AI 이미지는 <b>🎨 AI 가능</b> 자리에 쓰시는 것을 추천합니다. 본문에 이미 있는 "AI 활용" 표시처럼 AI 이미지 아래에는 출처를 밝혀 주세요.</div>
-    <div class="small">모든 프롬프트는 투자 리포트처럼 차분한 네이비·청록 색감으로 통일했습니다. 영어 프롬프트를 Gemini에 그대로 붙여넣으시면 됩니다. 글자는 AI가 틀리게 그리는 경우가 많아, 제목 글씨는 네이버 편집기에서 직접 얹는 것을 추천합니다.</div>
+    <h2>Gemini 이미지 프롬프트 · techgamja 템플릿</h2>
+    <div class="note"><b>캐릭터를 똑같이 나오게 하는 방법</b><br>
+    ① Gemini에 기존 썸네일(캐릭터가 보이는 이미지)을 <b>먼저 첨부</b>하고 아래 프롬프트를 붙여넣으세요. 프롬프트에 "attached mascot"이라고 적혀 있어 첨부한 캐릭터를 그대로 따라 그립니다.<br>
+    ② 그래도 얼굴이 달라지면, 프롬프트 끝의 캐릭터 문장을 지우고 배경만 만든 뒤 캐릭터 PNG를 네이버 편집기나 미리캔버스에서 얹으세요. 이 방법이 가장 일정합니다.</div>
+    <div class="small">📷 표시된 자리(전성분, 4종 실물 비교)는 실물 사진이 더 정확합니다. AI 이미지는 기존 글처럼 "AI 활용" 표시를 붙여 주세요.</div>
 
-    <h2 style="margin-top:10px">사진 1 · 대표 썸네일 <span class="small">🎨 AI 가능</span></h2>
-    <div class="txt" id="p1">An editorial investment-blog thumbnail: a plain white cream tube with no logo, standing on a clean white desk next to a tablet showing a simple rising line chart, a small globe paperweight and a pen beside it. Calm, professional research-report mood, soft daylight from a window, generous empty space on the left for a Korean title overlay. Photorealistic, 16:9. Common style: navy, teal and white color palette, clean and analytical, no brand names, no readable text, no logos.</div>
-    <button id="cp1" data-target="p1">사진 1 프롬프트 복사</button>
+    <h2 style="margin-top:10px">사진 1 · 썸네일 (1:1 정사각형)</h2>
+    <div class="txt" id="p1">Attached is my blog mascot. Create a square 1:1 blog thumbnail split into two horizontal halves.
+TOP HALF: solid deep navy background (#0F2A4A). On the left, very large extra-bold white Korean sans-serif text in three left-aligned lines: "MD크림 아닌 피지오겔," / "세계 더마 시장" / "총정리". On the right, the attached mascot character exactly as in the reference (a cartoon potato with round glasses, headset microphone, navy suit, yellow tie and name badge, holding a tablet and giving a thumbs-up), with small bold white text "techgamja" just to the left of its lower body.
+A thin bright green horizontal line separates the two halves.
+BOTTOM HALF: a cinematic, softly dark photo: a parent's fingertip with a small dab of white cream gently touching a sleeping baby's soft cheek, warm blurred bokeh background, shallow depth of field. Over the lower part of the photo, huge extra-bold white Korean text with a subtle dark shadow in two left-aligned lines: "테크감자의 10억" / "만드는 현실 재테크".
+No other text, no brand logos.</div>
+    <button id="cp1" data-target="p1">썸네일 프롬프트 복사</button>
 
-    <h2 style="margin-top:10px">사진 2 · 크림 제형 <span class="small">🎨 AI 가능</span></h2>
-    <div class="txt" id="p2">Clean product-research style macro shot: a small swirl of thick white moisturizing cream on a glass laboratory slide, placed on a white lab bench, a blurred pipette and beaker in the background, cool neutral lighting. Scientific and precise mood. Photorealistic, 4:3. Common style: navy, teal and white color palette, clean and analytical, no brand names, no readable text, no logos.</div>
+    <h2 style="margin-top:10px">사진 2 · 크림 제형 (16:9)</h2>
+    <div class="txt" id="p2">Attached is my blog mascot. Minimal product still life on a clean white tabletop with soft window light from the left: a white cream tube with a pale blue cap and a blank pale blue label lying diagonally, and a neat swirl of white cream squeezed out beside it. Lots of white space, soft shadows, calm and clinical. In the top-right corner, place the attached mascot character exactly as in the reference, with small bold dark navy text "techgamja" below it. No other text, no brand logos. 16:9.</div>
     <button id="cp2" data-target="p2">사진 2 프롬프트 복사</button>
 
-    <h2 style="margin-top:10px">사진 3 · 피부 장벽 구조 <span class="small">📷 전성분은 직접 촬영 · 아래는 설명용 그림</span></h2>
-    <div class="small">전성분은 제품 뒷면을 직접 찍어야 합니다. AI는 성분표를 지어낼 수 있습니다. 3번 단락의 "첫째·둘째·셋째" 성분 설명 옆에는 아래 구조도를 함께 넣으시면 좋습니다.</div>
-    <div class="txt" id="p3">A clean scientific diagram of the human skin barrier as a "brick and mortar" cross-section: skin cells drawn as light grey bricks and the lipid layers between them (ceramides, cholesterol, fatty acids) drawn as thin layered teal lines, with three small numbered callout circles (1, 2, 3) pointing to the lipid layers. Flat vector style like a pharmaceutical research report, white background. 4:3. Common style: navy, teal and white color palette, clean and analytical, no brand names, no words, no logos.</div>
+    <h2 style="margin-top:10px">사진 3 · 피부 장벽 구조 (16:9) <span class="small">📷 전성분은 직접 촬영</span></h2>
+    <div class="txt" id="p3">Attached is my blog mascot. A clean 3D render on a white background showing the skin barrier as a small "brick wall": rows of soft matte white blocks stacked neatly, with thin glowing teal layers between the rows like mortar, one corner cut away to show the layers. Minimal, soft studio light, pharmaceutical research mood. In the top-right corner, place the attached mascot character exactly as in the reference, with small bold dark navy text "techgamja" below it. No other text, no logos. 16:9.</div>
     <button id="cp3" data-target="p3">사진 3 프롬프트 복사</button>
 
-    <h2 style="margin-top:10px">사진 4 · 글로벌 매출 비교 <span class="small">📊 위 그래프 캡처 추천</span></h2>
-    <div class="small">숫자가 핵심인 이미지는 이 페이지 맨 위 막대그래프를 캡처하시는 것이 정확합니다. AI로 만드신다면 숫자가 맞는지 반드시 확인하세요.</div>
-    <div class="txt" id="p4">A clean horizontal bar chart in the style of an equity research report, white background, thin navy axis lines. Title at top: "Global Derma Brand Sales (KRW)". Six bars from longest to shortest with these exact labels: "La Roche-Posay 4.6T", "CeraVe 2.8T", "Eucerin & Aquaphor 2.4T", "Galderma Derma Skincare 2.0T", "Avene 1.8T", "Physiogel 0.11T". The Physiogel bar is teal and all other bars are light grey-navy. Small footnote at bottom: "EUR=1,600 KRW, USD=1,400 KRW". Flat design, sans-serif font, no logos. 16:9.</div>
+    <h2 style="margin-top:10px">사진 4 · 매출 순위 계단 (16:9) <span class="small">📊 숫자는 위 그래프 캡처 추천</span></h2>
+    <div class="small">숫자 대신 "높이 차이"로 1위와 피지오겔의 격차를 보여 주는 이미지입니다. 기존 글의 계단 이미지와 같은 구도입니다.</div>
+    <div class="txt" id="p4">Attached is my blog mascot. Minimal still life on a white table by a bright window: six matte white pedestal blocks in a row from left to right, getting dramatically shorter from a very tall block on the left to a tiny low block on the right. On top of each block sits a different unbranded white skincare container (tube, pump jar, tub, small jar), and the container on the smallest block has a pale teal cap to stand out. Soft shadows, calm and clean. In the top-right corner, place the attached mascot character exactly as in the reference, with small bold dark navy text "techgamja" below it. No text on products, no logos. 16:9.</div>
     <button id="cp4" data-target="p4">사진 4 프롬프트 복사</button>
 
-    <h2 style="margin-top:10px">사진 5 · 경쟁 크림 4종 <span class="small">📷 직접 촬영 · 아래는 대체 이미지</span></h2>
-    <div class="small">실제 4개 브랜드 비교는 실물 사진이어야 신뢰를 얻습니다. 제품이 없을 때만 아래 로고 없는 연출 사진을 쓰세요.</div>
-    <div class="txt" id="p5">Four different unbranded skincare containers lined up in a row on a white lab bench like product samples under review: a white tube, a white pump jar, a large white tub, and a small white squeeze tube, each with a blank grey sample tag in front. Even studio lighting, straight front view, clinical and orderly. Photorealistic, 16:9. Common style: navy, teal and white color palette, clean and analytical, no brand names, no readable text, no logos.</div>
+    <h2 style="margin-top:10px">사진 5 · 경쟁 크림 4종 (16:9) <span class="small">📷 실물 사진 권장</span></h2>
+    <div class="txt" id="p5">Attached is my blog mascot. Top-down flat lay on a plain white background: four different unbranded skincare containers evenly spaced in one straight horizontal row — a slim white tube, a white pump bottle, a wide white tub, and a small white squeeze tube with a blue cap. Soft even light, minimal and orderly. In the top-right corner, place the attached mascot character exactly as in the reference, with small bold dark navy text "techgamja" below it. No text on products, no logos. 16:9.</div>
     <button id="cp5" data-target="p5">사진 5 프롬프트 복사</button>
 
-    <h2 style="margin-top:10px">사진 6 · 제형 비교 <span class="small">🎨 AI 가능</span></h2>
-    <div class="txt" id="p6">Top-down research-style photo of four cream swatches in a neat row on a white ceramic tile, each a different texture: a light lotion, a soft gel-cream, a thick rich cream, and a dense balm, with small blank grey markers above each swatch. Cool neutral lighting, precise and orderly composition. Photorealistic, 16:9. Common style: navy, teal and white color palette, clean and analytical, no brand names, no readable text, no logos.</div>
+    <h2 style="margin-top:10px">사진 6 · 제형 비교 (16:9)</h2>
+    <div class="txt" id="p6">Attached is my blog mascot. Top-down flat lay on a plain white background: four cream swatches evenly spaced in one straight horizontal row, each a different texture — a thin milky lotion, a soft translucent gel-cream, a thick rich white cream with peaks, and a dense waxy balm. Soft even light, minimal and orderly. In the top-right corner, place the attached mascot character exactly as in the reference, with small bold dark navy text "techgamja" below it. No other text, no logos. 16:9.</div>
     <button id="cp6" data-target="p6">사진 6 프롬프트 복사</button>
 
-    <h2 style="margin-top:10px">사진 7 · 판매 채널 변화 (6번 단락) <span class="small">🎨 AI 가능</span></h2>
-    <div class="small">"첫째, 채널이 바뀌었습니다" 단락용입니다. 병원·약국에서 드럭스토어로 넘어가는 흐름을 한 장으로 보여 줍니다.</div>
-    <div class="txt" id="p7">A split-scene editorial image: on the left, a quiet pharmacy counter with a few white skincare boxes on a shelf behind it; on the right, a bright modern health-and-beauty drugstore aisle with long shelves of white skincare products. A thin teal arrow connects left to right, suggesting a shift in sales channel. Clean, realistic, slightly desaturated. 16:9. Common style: navy, teal and white color palette, clean and analytical, no brand names, no readable text, no logos.</div>
+    <h2 style="margin-top:10px">사진 7 · 아시아→북미 확장 지도 (16:9)</h2>
+    <div class="small">6번 단락 "둘째, 북미 사업권은 숨은 옵션입니다"용입니다. 기존 글의 세계지도와 같은 스타일입니다.</div>
+    <div class="txt" id="p7">Attached is my blog mascot. A dark navy digital world map with slightly lighter continents, faint grid lines and thin connection lines. Bright glowing green dots over South Korea, Japan and East Asia, and over the US and Canada. A glowing green curved arrow flows from Korea across the Pacific to North America, and small green upward arrows rise above Korea and North America. Clean data-visualization style. In the top-right corner, place the attached mascot character exactly as in the reference, with small bold white text "techgamja" below it. No other text, no logos. 16:9.</div>
     <button id="cp7" data-target="p7">사진 7 프롬프트 복사</button>
 
-    <h2 style="margin-top:10px">사진 8 · 투자 관점 정리 (7번 단락) <span class="small">🎨 AI 가능</span></h2>
-    <div class="small">"techgamja의 10억 만들기 관점 정리" 단락 끝에 넣는 마무리 이미지입니다.</div>
-    <div class="txt" id="p8">An investor's desk at dusk: a laptop showing an abstract stock chart with candlesticks, a printed research report with blank pages, a calculator, and a small white unbranded cream jar placed beside the notebook as a symbol of the consumer brand being analyzed. Warm desk lamp light mixed with cool navy evening light from the window, thoughtful long-term-investing mood. Photorealistic, 16:9. Common style: navy, teal and white color palette, clean and analytical, no brand names, no readable text, no logos.</div>
+    <h2 style="margin-top:10px">사진 8 · 투자 관점 마무리 (16:9)</h2>
+    <div class="txt" id="p8">Attached is my blog mascot. A dark navy background with a clean glowing data-visualization: a soft green stock line chart rising gently from left to right with faint grid lines, and in the foreground on a reflective dark surface, a single small white unbranded cream jar lit softly from above. Calm, long-term investing mood. In the top-right corner, place the attached mascot character exactly as in the reference, with small bold white text "techgamja" below it. No other text, no numbers, no logos. 16:9.</div>
     <button id="cp8" data-target="p8">사진 8 프롬프트 복사</button>
+
+    <h2 style="margin-top:10px">♻️ 다음 글에도 쓰는 썸네일 템플릿</h2>
+    <div class="small">[ ] 안의 제목 3줄과 하단 사진 설명만 바꿔서 쓰시면 됩니다. 제목은 한 줄에 8~9자 이내가 잘 나옵니다.</div>
+    <div class="txt" id="p9">Attached is my blog mascot. Create a square 1:1 blog thumbnail split into two horizontal halves.
+TOP HALF: solid deep navy background (#0F2A4A). On the left, very large extra-bold white Korean sans-serif text in three left-aligned lines: "[제목 1줄]" / "[제목 2줄]" / "[제목 3줄]". On the right, the attached mascot character exactly as in the reference (a cartoon potato with round glasses, headset microphone, navy suit, yellow tie and name badge, holding a tablet and giving a thumbs-up), with small bold white text "techgamja" just to the left of its lower body.
+A thin bright green horizontal line separates the two halves.
+BOTTOM HALF: a cinematic, softly dark photo of [하단 사진 설명 – 영어로], warm blurred bokeh background, shallow depth of field. Over the lower part of the photo, huge extra-bold white Korean text with a subtle dark shadow in two left-aligned lines: "테크감자의 10억" / "만드는 현실 재테크".
+No other text, no brand logos.</div>
+    <button id="cp9" data-target="p9">템플릿 복사</button>
   </div>
 
   <div class="card">
