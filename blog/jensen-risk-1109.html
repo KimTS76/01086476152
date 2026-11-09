@@ -1,0 +1,353 @@
+<title>젠슨 황 리스크 리포트</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;800&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: single reading column; tool bar on top, chart card, then the copyable manuscript */
+:root{
+  --bg:#f3f7f8; --surface:#ffffff; --fg:#17262b; --muted:#5b6f75; --line:#d5e2e5;
+  --accent:#1f7a8c; --accent-soft:#e1f0f3; --warn:#9a5b12; --bar-other:#b9cdd2;
+  --display:"Noto Serif KR",Georgia,serif; --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1a1d; --surface:#16252a; --fg:#e3eef0; --muted:#97adb3; --line:#2a3e44;
+  --accent:#5cc0d3; --accent-soft:#1b3a41; --warn:#e2a95a; --bar-other:#3b5960; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1a1d; --surface:#16252a; --fg:#e3eef0; --muted:#97adb3; --line:#2a3e44;
+  --accent:#5cc0d3; --accent-soft:#1b3a41; --warn:#e2a95a; --bar-other:#3b5960; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.75;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 64px}
+.wrap{max-width:720px;margin:0 auto;display:grid;gap:20px}
+h1{font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1.35;margin:0;text-wrap:balance}
+.eyebrow{font-size:.75rem;letter-spacing:.08em;color:var(--accent);font-weight:700}
+.lede{color:var(--muted);margin:0}
+.tools{display:flex;flex-wrap:wrap;gap:8px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding-block:10px;z-index:5;border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+button{font:inherit;font-weight:700;font-size:.9rem;border-radius:10px;border:1px solid var(--accent);padding:10px 14px;cursor:pointer;background:var(--surface);color:var(--accent)}
+button.primary{background:var(--accent);color:var(--surface)}
+button:focus-visible{outline:3px solid var(--accent-soft);outline-offset:2px}
+.toast{font-size:.85rem;color:var(--accent);align-self:center;min-height:1.2em}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h2{font-family:var(--display);font-size:1.05rem;margin:0 0 4px}
+.small{font-size:.8rem;color:var(--muted)}
+.bars{display:grid;gap:10px;margin-top:12px}
+.bar-row{display:grid;grid-template-columns:7.5em 1fr;gap:10px;align-items:center;font-size:.85rem}
+.bar-track{position:relative;height:22px}
+.bar{height:100%;background:var(--bar-other);border-radius:0 4px 4px 0;min-width:3px}
+.bar.me{background:var(--accent)}
+.bar-val{position:absolute;top:0;left:calc(var(--w) + 6px);font-variant-numeric:tabular-nums;font-size:.8rem;line-height:22px;white-space:nowrap}
+.bar-row:nth-child(-n+3) .bar-val{left:auto;right:6px;color:var(--fg)}
+.post{white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;font-size:.95rem}
+.post-box{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.copybox{display:grid;gap:8px}
+.copybox .txt{background:var(--accent-soft);border-radius:10px;padding:12px;white-space:pre-wrap;word-break:keep-all}
+.note{border-left:3px solid var(--warn);padding:4px 0 4px 12px;color:var(--muted);font-size:.85rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <div>
+    <div class="eyebrow">투자인사이트 · techgamja 원고 · 2026.11.09</div>
+    <h1>젠슨 황 리스크와 삼전닉스</h1>
+    <p class="lede">'젠슨황'(▲17)·'젠슨황 스파이'·'연인 논란'·'불륜'(모두 new)에 '삼전닉스 개미'·'증권사 코스피 뒷북'(new)까지 한 번에 잡는 원고입니다. 사생활 묘사 없이 투자 관점으로만 썼어요.</p>
+  </div>
+
+  <div class="tools">
+    <button class="primary" id="copy-body" data-target="post">본문 전체 복사</button>
+    <button id="copy-title" data-target="title-txt">제목 복사</button>
+    <button id="copy-tags" data-target="tags-txt">태그 복사</button>
+    <span class="toast" id="toast" role="status"></span>
+  </div>
+
+  <div class="card">
+    <h2>원고 핵심 숫자</h2>
+    <div class="small">개인 순매수 10/6~11/5 (코스콤) · 엔비디아 11/9 장전</div>
+    <div class="bars">
+      <div class="bar-row"><span>삼성전자</span><div class="bar-track" style="--w:100%"><div class="bar me" style="width:100%"></div><span class="bar-val">5조 8,323억</span></div></div>
+      <div class="bar-row"><span>SK하이닉스</span><div class="bar-track" style="--w:58%"><div class="bar" style="width:58%"></div><span class="bar-val" style="left:calc(58% + 6px);right:auto">3조 3,601억</span></div></div>
+      <div class="bar-row"><span>엔비디아</span><div class="bar-track" style="--w:10%"><div class="bar" style="width:10%"></div><span class="bar-val" style="left:calc(10% + 6px);right:auto">장전 -4~5%</span></div></div>
+    </div>
+  </div>
+
+  <div class="card copybox">
+    <h2>추천 제목</h2>
+    <div class="txt" id="title-txt">젠슨 황 '스파이 의혹 여성'과의 관계 인정, 엔비디아 이사회 조사 착수 — 9조 담은 삼전닉스 개미는 괜찮을까?</div>
+    <div class="small">다른 제목 후보: ① 젠슨 황 논란 총정리, 엔비디아 주가와 SK하이닉스 HBM에 미칠 영향 ② 삼전닉스 9조 산 개미 vs 뒤늦게 목표가 낮춘 증권사, 젠슨 황 리스크까지</div>
+  </div>
+
+  <div class="post-box">
+<div class="post" id="post">안녕하세요! 10억 만들기에 도전하는 실전 투자 'techgamja'입니다.
+
+지난 글에서는 검은 금요일 코스피 서킷브레이커를 정리했는데요. 반도체가 숨 돌릴 틈도 없이, 이번에는 AI의 상징 같은 인물에게서 악재가 나왔습니다.
+
+엔비디아 CEO 젠슨 황이 임직원에게 "아내에게 불충실했다"고 인정했습니다.
+상대는 미국 정보당국이 '중국 정보기관에 포섭됐다'고 보는 여성이라는 보도가 나왔고, 엔비디아 이사회는 독립 조사에 들어갔습니다.
+
+그리고 한국에서는 개미들이 최근 한 달 동안 삼성전자·SK하이닉스를 9조 원 넘게 사들였습니다.
+
+"젠슨 황 리스크, 내 삼전닉스는 괜찮을까?"
+사생활 이야기는 빼고, 투자자에게 중요한 숫자와 일정만 정리해 드리겠습니다.
+
+※ 이 글은 2026년 11월 9일 보도 기준입니다. 조사가 진행 중인 사안으로, 사실관계가 바뀔 수 있습니다.
+
+[사진 1: 썸네일 – 네이비 제목 + 하단 사진]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. 무슨 일이 있었나 — 확인된 사실만
+
+보도와 회사 발표로 확인된 내용은 이렇습니다.
+
+▶ 보도 : 영국 파이낸셜타임스(FT)는 미 당국자들이 올해 초 정보기관 첩보를 토대로 작성한 메모에, 젠슨 황이 싱가포르 데이터센터 기업 메가스피드의 임원 앨리스 황과 연인 관계였다는 내용이 담겼다고 보도했습니다.
+▶ 의혹 : 미 정보당국은 앨리스 황이 중국 국가안전부(MSS)에 포섭된 인물이라고 보고 있습니다.
+▶ 본인 : 젠슨 황은 사내 메시지로 외도를 인정하고 "가족에게 상처를 줬다"고 밝혔습니다.
+▶ 회사 : 엔비디아 이사회는 독립 조사에 착수했습니다. 다만 국가안보나 회사 기밀이 훼손됐다고 볼 근거는 없다고 밝혔고, 두 사람의 접촉은 일상적인 업무 교류였다는 입장입니다.
+▶ 의회 : 미 하원 공화당 의원 3명이 11월 18일 비공개 브리핑에 나와 해명하라고 요구했습니다.
+
+중요한 점은, 지금까지 젠슨 황의 위법 행위를 주장한 곳은 없다는 것입니다.
+젠슨 황이 상대의 신분을 알고 있었는지도 정보당국조차 판단하지 못했다고 보도됐습니다.
+
+[사진 2: 사건 타임라인 이미지]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+2. 시장 반응 — 이미 빠진 주가에 한 번 더
+
+엔비디아 주가는 원래도 약했습니다.
+지난주 미국 반도체지수가 하루 12% 넘게 빠졌고, 엔비디아도 그날 9% 하락했습니다.
+
+여기에 이번 보도가 더해졌습니다.
+
+▶ 11월 9일(현지시간) 장 시작 전 : 4~5% 하락 (CNBC 등, 보도 시점마다 차이)
+▶ 독일 프랑크푸르트 거래 : 6% 넘게 하락
+▶ 최근 한 달 : 약 18% 하락 (한 외신 집계)
+
+애널리스트 의견도 엇갈립니다.
+한쪽은 이사회 조사 결과에 따라 CEO 교체 가능성까지 있다고 봤고, 다른 쪽은 교체까지는 가지 않을 것이라고 봤습니다.
+
+[사진 3: 하락 위에 하락 차트 이미지]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3. 진짜 쟁점은 두 가지 — '키맨 리스크'와 '중국 수출'
+
+첫째, 키맨 리스크입니다.
+
+엔비디아는 1993년 창업 이후 젠슨 황이 30년 넘게 이끈 회사입니다.
+한 사람에 대한 신뢰가 회사 가치의 큰 부분을 차지할 때, 그 사람이 흔들리면 주가도 같이 흔들립니다. 이것을 '키맨 리스크'라고 합니다.
+
+둘째, 이 사건이 '중국 수출' 문제와 연결된다는 점입니다.
+
+미 정부는 메가스피드가 2023년 이후 엔비디아 GPU 13만 6천 개 이상을 사들인 뒤, 동남아 데이터센터를 통해 중국 기업에 연산 능력을 빌려주거나 넘긴 것으로 의심하고 있습니다.
+CBS는 메가스피드가 2년간 48억 달러가 넘는 엔비디아 칩을 샀다고 보도했습니다.
+엔비디아는 칩이 중국으로 빼돌려졌다는 증거를 찾지 못했다는 입장입니다.
+
+여기서 지난 글의 블루웨이브가 다시 등장합니다.
+내년 1월 3일 새 의회가 출범하면 민주당이 상임위원회의 조사권과 소환권을 갖게 되고, 엔비디아의 대중국 판매와 수출통제 준수 여부를 집중적으로 들여다볼 것으로 예상됩니다.
+
+[사진 4: 한 사람에 기댄 블록 이미지]
+[사진 5: 수출 경로 지도 이미지]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+4. 삼전닉스 개미 — 9조를 샀는데 증권사는 '뒷북'
+
+엔비디아가 흔들리면 가장 먼저 걱정되는 곳이 HBM을 공급하는 우리 반도체입니다.
+그런데 한국 개인 투자자들은 하락장에서 오히려 더 샀습니다.
+
+개인 순매수 (10월 6일~11월 5일, 코스콤 집계)
+
+▶ 삼성전자 : 5조 8,323억 원
+▶ SK하이닉스 : 3조 3,601억 원
+▶ 합계 : 9조 1,924억 원, ETF 포함 국내 종목 순매수 1·2위
+▶ 코스피 -5.28%였던 11월 5일 하루에만 2조 1,179억 원 순매수
+
+그리고 급락이 다 나온 뒤에야 증권사들이 목표주가를 낮추기 시작했습니다.
+
+증권사 목표주가 변화
+
+▶ 한국투자증권 : 삼성전자 65만 원 → 44만 원, SK하이닉스 470만 원 → 320만 원 (매수 의견 유지)
+▶ KB증권·IBK투자증권 : SK하이닉스 목표가 하향
+▶ 골드만삭스 : 코스피 12개월 목표 1만 2,000 → 9,000
+▶ 미래에셋증권 : 오히려 상향, 삼성전자 37만 → 40만 원, SK하이닉스 280만 → 310만 원
+
+참고로 11월 6일 종가는 삼성전자 18만 8,700원, SK하이닉스 113만 2,000원이었습니다.
+낮춘 목표가도 여전히 현재 주가의 두 배가 넘습니다.
+
+[사진 6: 개미와 반도체 이미지]
+[사진 7: 내려간 목표 깃발 이미지]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+5. techgamja가 보는 체크포인트 3가지
+
+첫째, 11월 17일 엔비디아 실적이 스캔들보다 큽니다.
+
+한 업계 관계자는 "엔비디아 GPU가 필요한 곳은 여전히 많고 공급 계약은 이미 정해져 있다"며 시장 지배력에는 큰 영향이 없을 것으로 봤습니다.
+결국 숫자가 답합니다. 데이터센터 매출과 다음 분기 전망이 SK하이닉스 HBM 수요의 가장 직접적인 신호입니다.
+
+둘째, 11월 18일 브리핑과 1월 3일 새 의회를 달력에 적어 두세요.
+
+이번 사건의 무게는 사생활이 아니라 '중국 수출통제'로 번지느냐에 달려 있습니다.
+엔비디아 칩 판매가 제한되면 메모리 수요에도 영향이 갈 수 있고, 다른 시장 주문이 이를 메우는지가 관건입니다.
+
+셋째, 증권사 목표주가는 '후행 지표'입니다.
+
+주가가 빠진 뒤에 목표가를 낮추는 모습은 이번에도 반복됐습니다.
+목표주가 숫자보다 '왜 낮췄는지', 그리고 '실적 추정치를 바꿨는지'를 보는 것이 더 정확합니다.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+6. techgamja의 10억 만들기 관점 정리
+
+한 사람의 CEO, 한 개의 산업, 두 개의 종목.
+이번 일은 '쏠림'이 얼마나 위험한지 다시 보여줬습니다.
+
+그래서 저는 이렇게 봅니다.
+
+보수적 투자자라면, 개별 종목보다 지수와 1배 ETF로 반도체를 담으세요.
+한 종목이 전체 계좌의 20~30%를 넘지 않게 상한선을 정해 두면, CEO 한 사람의 뉴스에 계좌 전체가 흔들리지 않습니다.
+
+공격적 투자자라면, 11월 17일 엔비디아 실적을 확인한 뒤 움직여도 늦지 않습니다.
+이미 삼전닉스를 많이 담았다면 '물타기'보다 먼저 내 비중이 몇 %인지부터 계산해 보세요. 추가 매수는 실적과 수출통제 뉴스를 확인하면서 나눠서 하는 것이 좋습니다.
+
+CEO도 사람이고, 사람은 실수합니다.
+그래서 10억으로 가는 계좌는 한 사람, 한 종목에 기대지 않아야 합니다.
+
+[사진 8: 균형 저울 마무리 이미지]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+분석이 도움 되셨다면 공감(❤️)과 이웃 추가 부탁드립니다!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+참고 자료 : 파이낸셜타임스 보도(언론 인용), CNBC(2026.11.8~9), 로이터·Decrypt·The Globe and Mail(엔비디아 이사회 조사·주가), MBC·주간경향·경향신문(젠슨 황 인정), 서울경제·이투데이·글로벌이코노믹(의회 소환·수출통제), 이데일리·아시아경제(국내 반도체 영향), 세계일보(개인 순매수, 코스콤 집계), 디지털타임스(증권사 목표가 하향), 한국경제TV(증권가 전망 하향), 톱스타뉴스(11월 6일 종가)
+
+글쓴이는 제약 업계 종사자이며, 이 글은 소속 회사의 입장과 무관한 개인 의견입니다.
+
+[필독] 본 포스팅은 기업과 시장 동향에 대한 분석 및 정보 제공이 목적이며, 특정 종목의 매수·매도 추천이 아닙니다. 조사가 진행 중인 사안으로, 보도된 의혹은 확정된 사실이 아니며 이후 사실관계가 달라질 수 있습니다. 투자 판단과 그에 따른 결과는 투자자 본인에게 책임이 있습니다.</div>
+  </div>
+
+  <div class="card copybox">
+    <h2>태그</h2>
+    <div class="txt" id="tags-txt">#젠슨황 #젠슨황스파이 #젠슨황논란 #엔비디아 #엔비디아주가 #엔비디아실적 #키맨리스크 #수출통제 #삼전닉스 #삼전닉스개미 #삼성전자주가 #SK하이닉스주가 #HBM #목표주가 #증권사목표가 #반도체주 #블루웨이브 #미국증시 #ETF #분산투자 #10억만들기 #재테크 #techgamja #테크감자</div>
+  </div>
+
+  <div class="card copybox">
+    <h2>Gemini 이미지 프롬프트</h2>
+    <div class="note">사진마다 Gemini <b>새 채팅</b> → 적힌 참고 이미지 첨부 → 프롬프트 붙여넣기. 회사 로고·실제 인물(젠슨 황 등)은 넣지 않도록 했습니다. 실존 인물의 AI 합성 이미지는 명예훼손 소지가 있어 피하세요. AI 이미지에는 "AI 활용" 표시를 붙여 주세요.</div>
+
+    <h2 style="margin-top:10px">사진 1 · 썸네일 (1:1) <span class="small">첨부: 지난 썸네일</span></h2>
+    <div class="txt" id="p1">Use the attached image as the layout and style reference. Create a new square 1:1 blog thumbnail with exactly the same structure, fonts, colors and mascot as the reference. Only change the title text and the bottom photo.
+
+TOP HALF: the same solid deep navy background. On the left, very large extra-bold white Korean sans-serif text in three left-aligned lines, same size and weight as the reference:
+"젠슨 황 리스크,"
+"엔비디아 -5%"
+"삼전닉스는?"
+On the right, the same mascot character as in the reference, unchanged (cartoon potato with round glasses, headset microphone, navy suit, yellow tie and name badge, holding a tablet and giving a thumbs-up), with the same small bold white "techgamja" text beside it.
+
+The same thin bright green horizontal line separates the two halves.
+
+BOTTOM HALF: a cinematic, softly dark photo in the same mood as the reference: a single glowing green AI graphics chip lying on a dark glass table under one spotlight, with a thin crack running across the glass surface next to it, shallow depth of field. No people.
+Over the lower part of the photo, keep the same huge extra-bold white Korean text with a subtle dark shadow, in two left-aligned lines exactly as in the reference:
+"테크감자의 10억"
+"만드는 현실 재테크"
+
+No other text, no company logos, no real people.</div>
+    <button id="cp1" data-target="p1">썸네일 프롬프트 복사</button>
+
+    <h2 style="margin-top:10px">사진 2 · 사건 타임라인 <span class="small">1번 단락</span></h2>
+    <div class="small">첨부할 참고 이미지: <b>C · 네이비 세계지도 (초록 점과 화살표)</b></div>
+    <div class="txt" id="p2">Use the attached image as the style and layout reference. Create a new 16:9 image with the same look: same background, lighting, color tone, camera angle and minimal composition. Keep the mascot in the top-right corner exactly as in the reference (same character, same size, same position) with the same "techgamja" text below it. Only change the objects as described below.
+
+Objects: replace the world map with a clean glowing horizontal timeline on the same dark navy background: five glowing dots connected by a thin line from left to right, the last two dots glowing amber as a warning, faint grid lines behind it.
+
+No other text, no numbers, no company names, no logos.</div>
+    <button id="cp2" data-target="p2">사진 2 프롬프트 복사</button>
+
+    <h2 style="margin-top:10px">사진 3 · 하락 위에 하락 <span class="small">2번 단락</span></h2>
+    <div class="small">첨부할 참고 이미지: <b>C · 네이비 세계지도 (초록 점과 화살표)</b></div>
+    <div class="txt" id="p3">Use the attached image as the style and layout reference. Create a new 16:9 image with the same look: same background, lighting, color tone, camera angle and minimal composition. Keep the mascot in the top-right corner exactly as in the reference (same character, same size, same position) with the same "techgamja" text below it. Only change the objects as described below.
+
+Objects: replace the world map with a clean glowing line chart on the same dark navy background: a red line falling in two steep drops separated by a short flat pause, ending at the lowest point on the right. Faint grid lines behind it.
+
+No other text, no numbers, no company names, no logos.</div>
+    <button id="cp3" data-target="p3">사진 3 프롬프트 복사</button>
+
+    <h2 style="margin-top:10px">사진 4 · 한 사람에 기댄 블록 <span class="small">3번 단락</span></h2>
+    <div class="small">첨부할 참고 이미지: <b>A · 계단 이미지 (펜 3개가 블록 계단 위)</b></div>
+    <div class="txt" id="p4">Use the attached image as the style and layout reference. Create a new 16:9 image with the same look: same background, lighting, color tone, camera angle and minimal composition. Keep the mascot in the top-right corner exactly as in the reference (same character, same size, same position) with the same "techgamja" text below it. Only change the objects as described below.
+
+Objects: on the same white tabletop by the window, a tall tower of matte white blocks balanced on top of one single narrow block at the bottom, slightly tilting, giving a feeling of fragile balance.
+
+No other text, no numbers, no company names, no logos.</div>
+    <button id="cp4" data-target="p4">사진 4 프롬프트 복사</button>
+
+    <h2 style="margin-top:10px">사진 5 · 수출 경로 지도 <span class="small">3번 단락</span></h2>
+    <div class="small">첨부할 참고 이미지: <b>C · 네이비 세계지도 (초록 점과 화살표)</b></div>
+    <div class="txt" id="p5">Use the attached image as the style and layout reference. Create a new 16:9 image with the same look: same background, lighting, color tone, camera angle and minimal composition. Keep the mascot in the top-right corner exactly as in the reference (same character, same size, same position) with the same "techgamja" text below it. Only change the objects as described below.
+
+Objects: on the same dark navy world map, a glowing green arrow starts in the United States and curves to Southeast Asia, then a red dashed arrow continues from Southeast Asia toward China and ends at a small glowing red stop barrier. Remove other arrows from the reference.
+
+No other text, no numbers, no company names, no logos.</div>
+    <button id="cp5" data-target="p5">사진 5 프롬프트 복사</button>
+
+    <h2 style="margin-top:10px">사진 6 · 개미와 반도체 <span class="small">4번 단락</span></h2>
+    <div class="small">첨부할 참고 이미지: <b>B · 일렬 플랫레이 (튜브·캡슐·알약·주사기)</b></div>
+    <div class="txt" id="p6">Use the attached image as the style and layout reference. Create a new 16:9 image with the same look: same background, lighting, color tone, camera angle and minimal composition. Keep the mascot in the top-right corner exactly as in the reference (same character, same size, same position) with the same "techgamja" text below it. Only change the objects as described below.
+
+Objects: on the same plain white background, a neat straight line of small toy ants carrying tiny gold coins from the left toward two square computer chips with gold pins placed on the right.
+
+No other text, no numbers, no company names, no logos.</div>
+    <button id="cp6" data-target="p6">사진 6 프롬프트 복사</button>
+
+    <h2 style="margin-top:10px">사진 7 · 내려간 목표 깃발 <span class="small">4번 단락</span></h2>
+    <div class="small">첨부할 참고 이미지: <b>A · 계단 이미지 (펜 3개가 블록 계단 위)</b></div>
+    <div class="txt" id="p7">Use the attached image as the style and layout reference. Create a new 16:9 image with the same look: same background, lighting, color tone, camera angle and minimal composition. Keep the mascot in the top-right corner exactly as in the reference (same character, same size, same position) with the same "techgamja" text below it. Only change the objects as described below.
+
+Objects: on the same white tabletop by the window, three matte white blocks of decreasing height from left to right, each with a small teal flag on a pin; the flags are placed lower on each block, as if target levels were lowered.
+
+No other text, no numbers, no company names, no logos.</div>
+    <button id="cp7" data-target="p7">사진 7 프롬프트 복사</button>
+
+    <h2 style="margin-top:10px">사진 8 · 균형 저울 마무리 <span class="small">6번 단락</span></h2>
+    <div class="small">첨부할 참고 이미지: <b>B · 일렬 플랫레이 (튜브·캡슐·알약·주사기)</b></div>
+    <div class="txt" id="p8">Use the attached image as the style and layout reference. Create a new 16:9 image with the same look: same background, lighting, color tone, camera angle and minimal composition. Keep the mascot in the top-right corner exactly as in the reference (same character, same size, same position) with the same "techgamja" text below it. Only change the objects as described below.
+
+Objects: on the same plain white background, a simple white balance scale in the center: on one side a single computer chip, on the other side several small different objects (a white pill bottle, a tiny gold bar, a few coins), the scale perfectly level.
+
+No other text, no numbers, no company names, no logos.</div>
+    <button id="cp8" data-target="p8">사진 8 프롬프트 복사</button>
+
+    <h2 style="margin-top:10px">고칠 때 이어서 보낼 문장</h2>
+    <div class="small" style="font-size:.88rem;line-height:1.8">
+    · 글자가 틀렸을 때: <code>Keep everything the same, only fix the Korean title text exactly as written.</code><br>
+    · 캐릭터가 다를 때: <code>Keep everything the same, but make the mascot identical to the one in the reference image.</code><br>
+    · 구도가 많이 다를 때: <code>Follow the composition of the reference image more closely.</code>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>발행 전 체크리스트</h2>
+    <div class="small" style="font-size:.88rem;line-height:1.8">
+      ✔ 오늘(11/9)~내일 중 발행: 젠슨황 키워드가 모두 new로 막 뜬 상태입니다<br>
+      ✔ 미국 11/9 장 마감 후 엔비디아 실제 하락률로 2번 단락 업데이트 (현재는 장전 수치)<br>
+      ✔ 제목·본문에 '불륜', '스파이' 같은 단정 표현을 추가하지 마세요 — 의혹은 '보도', '의혹'으로 유지<br>
+      ✔ 후속 글 예약: 11/17 엔비디아 실적 + 옵토닉스 상장, 11/18 의회 브리핑<br>
+      ✔ 발행 후 대량 수정 금지, 숫자 업데이트는 1~2회만
+    </div>
+  </div>
+
+  <div class="note">원문 출처: CNBC(엔비디아 조사·주가), Reuters/Investing.com(시간외 하락), Decrypt·Globe and Mail(이사회 조사), MBC·주간경향(본인 인정), 서울경제·이투데이(의회 소환), 이데일리·아시아경제(국내 영향), 세계일보(개인 순매수), 디지털타임스(목표가 하향), 한국경제TV(증권가 전망)</div>
+</div>
+
+<script>
+const toast=document.getElementById('toast');
+function show(m){toast.textContent=m;clearTimeout(show.t);show.t=setTimeout(()=>toast.textContent='',2500)}
+function selectEl(el){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r)}
+document.querySelectorAll('button[data-target]').forEach(b=>b.addEventListener('click',()=>{
+  const el=document.getElementById(b.dataset.target);const text=el.innerText.trim();
+  const p=navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(text):Promise.reject();
+  p.then(()=>show('복사됐어요. 블로그에 붙여넣으세요.')).catch(()=>{selectEl(el);show('텍스트를 선택했어요. 길게 눌러 복사하세요.')});
+}));
+</script>
