@@ -1,0 +1,159 @@
+<title>난임치료제 SNS 키트</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;800&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: single reading column; tool bar on top, chart card, then the copyable manuscript */
+:root{
+  --bg:#f3f7f8; --surface:#ffffff; --fg:#17262b; --muted:#5b6f75; --line:#d5e2e5;
+  --accent:#1f7a8c; --accent-soft:#e1f0f3; --warn:#9a5b12; --bar-other:#b9cdd2;
+  --display:"Noto Serif KR",Georgia,serif; --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1a1d; --surface:#16252a; --fg:#e3eef0; --muted:#97adb3; --line:#2a3e44;
+  --accent:#5cc0d3; --accent-soft:#1b3a41; --warn:#e2a95a; --bar-other:#3b5960; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1a1d; --surface:#16252a; --fg:#e3eef0; --muted:#97adb3; --line:#2a3e44;
+  --accent:#5cc0d3; --accent-soft:#1b3a41; --warn:#e2a95a; --bar-other:#3b5960; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.75;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 64px}
+.wrap{max-width:720px;margin:0 auto;display:grid;gap:20px}
+h1{font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1.35;margin:0;text-wrap:balance}
+.eyebrow{font-size:.75rem;letter-spacing:.08em;color:var(--accent);font-weight:700}
+.lede{color:var(--muted);margin:0}
+.tools{display:flex;flex-wrap:wrap;gap:8px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding-block:10px;z-index:5;border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+button{font:inherit;font-weight:700;font-size:.9rem;border-radius:10px;border:1px solid var(--accent);padding:10px 14px;cursor:pointer;background:var(--surface);color:var(--accent)}
+button.primary{background:var(--accent);color:var(--surface)}
+button:focus-visible{outline:3px solid var(--accent-soft);outline-offset:2px}
+.toast{font-size:.85rem;color:var(--accent);align-self:center;min-height:1.2em}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h2{font-family:var(--display);font-size:1.05rem;margin:0 0 4px}
+.small{font-size:.8rem;color:var(--muted)}
+.bars{display:grid;gap:10px;margin-top:12px}
+.bar-row{display:grid;grid-template-columns:7.5em 1fr;gap:10px;align-items:center;font-size:.85rem}
+.bar-track{position:relative;height:22px}
+.bar{height:100%;background:var(--bar-other);border-radius:0 4px 4px 0;min-width:3px}
+.bar.me{background:var(--accent)}
+.bar-val{position:absolute;top:0;left:calc(var(--w) + 6px);font-variant-numeric:tabular-nums;font-size:.8rem;line-height:22px;white-space:nowrap}
+.bar-row:nth-child(-n+3) .bar-val{left:auto;right:6px;color:var(--fg)}
+.post{white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;font-size:.95rem}
+.post-box{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.copybox{display:grid;gap:8px}
+.copybox .txt{background:var(--accent-soft);border-radius:10px;padding:12px;white-space:pre-wrap;word-break:keep-all}
+.note{border-left:3px solid var(--warn);padding:4px 0 4px 12px;color:var(--muted);font-size:.85rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.grid img{width:100%;border-radius:8px;display:block}
+video{width:100%;max-width:320px;border-radius:12px;display:block}
+.steps{display:grid;gap:10px;font-size:.92rem}
+.steps b{color:var(--accent)}
+table.t{border-collapse:collapse;width:100%;font-size:.88rem}
+table.t td{border-top:1px solid var(--line);padding:8px 6px;vertical-align:top}
+table.t td:first-child{white-space:nowrap;color:var(--muted);font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto}
+</style>
+
+<div class="wrap">
+  <div>
+    <div class="eyebrow">SNS 배포 키트 · 난임치료제 편</div>
+    <h1>블로그 글을 카드뉴스·쇼츠로</h1>
+    <p class="lede">카드뉴스 10장(4:5), 쇼츠 영상 38초(9:16), 캡션·해시태그·내레이션 대본을 한곳에 모았어요. 이미지는 길게 눌러 저장할 수 있어요.</p>
+  </div>
+
+  <div class="card">
+    <h2>① 인스타 카드뉴스 10장 · 1080×1350</h2>
+    <div class="small">인스타 피드에서 가장 크게 보이는 4:5 비율. 순서대로 한 게시물(캐러셀)에 올리세요.</div>
+    <div class="grid" style="margin-top:10px"><img src="cards/01.png" alt="카드 1"><img src="cards/02.png" alt="카드 2"><img src="cards/03.png" alt="카드 3"><img src="cards/04.png" alt="카드 4"><img src="cards/05.png" alt="카드 5"><img src="cards/06.png" alt="카드 6"><img src="cards/07.png" alt="카드 7"><img src="cards/08.png" alt="카드 8"><img src="cards/09.png" alt="카드 9"><img src="cards/10.png" alt="카드 10"></div>
+  </div>
+
+  <div class="card">
+    <h2>② 쇼츠·릴스 영상 · 1080×1920 · 38초</h2>
+    <div class="small">무음 영상이에요. 아래 대본으로 목소리(또는 캡컷 AI 음성)와 음악을 얹어 올리세요.</div>
+    <video src="techgamja_shorts.mp4" controls playsinline muted style="margin-top:10px"></video>
+  </div>
+
+  <div class="card copybox">
+    <h2>③ 인스타 캡션</h2>
+    <div class="txt" id="cap">출생아 5명 중 1명이 난임 시술로 태어납니다 👶
+저출생인데 거꾸로 커지는 시장, 난임치료제를 정리했어요.
+
+✔ 2025년 정부 지원 출생아 4만 8,981명 (1년 새 +31%)
+✔ 세계 난임치료제 시장 약 42억 달러, 연 6~7% 성장
+✔ 독일 머크 · 스위스 페링 · 미국 오가논 3강 구도
+
+1위는 주춤하고 2위는 최고 기록을 쓰는, 지금 가장 흥미로운 구간입니다.
+
+📌 카드를 넘겨 보고 저장해 두세요
+📖 회사별 실적 표까지 담은 전체 분석은 프로필 링크 블로그에서
+
+글쓴이는 제약 업계 종사자이며, 소속 회사와 무관한 개인 의견입니다. 특정 종목 매수 추천이나 의약품 사용 권유가 아니며, 난임 치료는 전문의 진료에 따라 결정하세요.</div>
+    <button id="b-cap" class="primary" data-target="cap">캡션 복사</button>
+    <h2 style="margin-top:8px">해시태그 (15개)</h2>
+    <div class="txt" id="tags">#난임 #난임치료 #시험관 #저출생 #출산율 #제약바이오 #헬스케어 #헬스케어투자 #해외주식 #주식공부 #투자공부 #재테크 #카드뉴스 #techgamja #테크감자</div>
+    <button id="b-tags" data-target="tags">해시태그 복사</button>
+    <div class="small">약 이름(제품명) 해시태그는 넣지 않았어요. 아래 '주의할 점'을 참고하세요.</div>
+  </div>
+
+  <div class="card copybox">
+    <h2>④ 쇼츠 내레이션 대본 (장면별 시간)</h2>
+    <div class="tw"><table class="t"><tr><td>0:00–0:04</td><td>작년 우리나라 아기 5명 중 1명은 난임 시술로 태어났습니다.</td></tr><tr><td>0:04–0:08</td><td>정부 지원으로 태어난 아기만 4만 9천 명 가까이, 1년 새 31% 늘었죠.</td></tr><tr><td>0:08–0:13</td><td>저출생인데 이 시장은 커집니다. 소득 기준 폐지, 예산 2.5배, 시술은 4년 새 39% 증가.</td></tr><tr><td>0:13–0:18</td><td>세계 난임치료제 시장은 약 6조 원, 매년 6~7%씩 자라고 있습니다.</td></tr><tr><td>0:18–0:23</td><td>이 시장은 독일 머크, 스위스 페링, 미국 오가논이 이끌고 있는데요.</td></tr><tr><td>0:23–0:28</td><td>1위 머크의 대표 제품은 6.7% 줄었고, 2위 페링은 사상 최대 매출을 냈습니다.</td></tr><tr><td>0:28–0:33</td><td>그런데 투자는 쉽지 않습니다. 순수하게 난임만 하는 상장사가 거의 없거든요.</td></tr><tr><td>0:33–0:38</td><td>20년차 제약 MR의 전체 분석은 프로필 링크 블로그에서 확인하세요.</td></tr></table></div>
+    <div class="txt" id="narr" hidden>작년 우리나라 아기 5명 중 1명은 난임 시술로 태어났습니다.
+정부 지원으로 태어난 아기만 4만 9천 명 가까이, 1년 새 31% 늘었죠.
+저출생인데 이 시장은 커집니다. 소득 기준 폐지, 예산 2.5배, 시술은 4년 새 39% 증가.
+세계 난임치료제 시장은 약 6조 원, 매년 6~7%씩 자라고 있습니다.
+이 시장은 독일 머크, 스위스 페링, 미국 오가논이 이끌고 있는데요.
+1위 머크의 대표 제품은 6.7% 줄었고, 2위 페링은 사상 최대 매출을 냈습니다.
+그런데 투자는 쉽지 않습니다. 순수하게 난임만 하는 상장사가 거의 없거든요.
+20년차 제약 MR의 전체 분석은 프로필 링크 블로그에서 확인하세요.</div>
+    <button id="b-narr" data-target="narr">대본 전체 복사</button>
+    <div class="small">한 장면에 4~5초라 조금 빠르게 읽어야 해요. 캡컷에서 장면 길이를 늘려도 됩니다.</div>
+  </div>
+
+  <div class="card copybox">
+    <h2>⑤ 유튜브 쇼츠 제목·설명</h2>
+    <div class="txt" id="ytt">출생아 5명 중 1명이 난임 시술로? 저출생인데 커지는 시장 #shorts</div>
+    <button id="b-ytt" data-target="ytt">제목 복사</button>
+    <div class="txt" id="ytd">저출생인데 거꾸로 커지는 난임치료제 시장, 20년차 현직 제약 MR이 숫자로 정리했습니다.
+전체 분석(회사별 실적 표·미국 약가 이슈): 네이버 블로그 '테크감자'
+※ 개인 의견이며 투자 추천·의약품 사용 권유가 아닙니다.
+#난임 #시험관 #저출생 #제약바이오 #헬스케어투자 #테크감자</div>
+    <button id="b-ytd" data-target="ytd">설명 복사</button>
+  </div>
+
+  <div class="card">
+    <h2>⑥ 올리는 순서</h2>
+    <div class="steps">
+      <div><b>1. 인스타 프로필 정리</b> — 프로필 링크에 네이버 블로그 주소를 넣고, 소개에 "20년차 현직 제약 MR의 투자 노트"를 적어 두세요. 게시물 링크는 클릭이 안 돼서 프로필 링크로 보내야 해요.</div>
+      <div><b>2. 카드뉴스 올리기</b> — 인스타 앱 + 버튼 → 게시물 → 사진 10장을 순서대로 선택 → 비율 4:5 확인 → ③ 캡션·해시태그 붙여넣기.</div>
+      <div><b>3. 쇼츠 영상 다듬기 (캡컷 무료)</b> — 영상 불러오기 → 텍스트 → '텍스트 음성 변환'에 ④ 대본 붙여넣기(또는 직접 녹음) → 오디오에서 저작권 없는 음악 추가 → 1080p로 내보내기.</div>
+      <div><b>4. 릴스·쇼츠 동시 배포</b> — 같은 영상을 인스타 릴스와 유튜브 쇼츠에 각각 올리세요. 유튜브는 ⑤ 제목에 #shorts를 넣어 두었어요.</div>
+      <div><b>5. 예약 발행</b> — 메타 비즈니스 스위트(무료)를 쓰면 인스타 게시물·릴스를 원하는 시간에 예약할 수 있어요. 블로그 발행 다음 날 오전 7~9시나 저녁 8~10시를 추천해요.</div>
+      <div><b>6. 블로그와 연결</b> — 블로그 글 하단에 "인스타 카드뉴스로도 볼 수 있어요" 한 줄과 인스타 주소를 넣으면 서로 유입이 돌아요.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>주의할 점</h2>
+    <div class="small" style="font-size:.88rem;line-height:1.8">
+      ⚠ <b>전문의약품 광고 규제</b>: 약사법상 전문의약품은 일반인 대상 광고가 금지돼요. 블로그보다 SNS가 '광고'로 보일 위험이 더 커서, 카드·영상·캡션에서 약 제품명을 빼고 회사명과 '과배란 주사' 같은 일반 명칭만 썼어요.<br>
+      ⚠ <b>업계 종사자 표기</b>: 현직 MR이라는 점이 신뢰를 주지만, 담당 제품과 관련된 글이라면 이해관계를 밝히고 회사의 SNS 활동 규정도 꼭 확인하세요.<br>
+      ⚠ <b>AI 이미지 표기</b>: 마스코트 외에 AI 이미지를 추가로 쓰면 인스타의 'AI 정보' 라벨을 켜 주세요.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>다음 글부터는</h2>
+    <div class="small" style="font-size:.88rem;line-height:1.8">블로그 원고를 만들 때 "카드뉴스·쇼츠도 같이"라고 말씀해 주시면, 같은 디자인으로 이 키트까지 한 번에 만들어 드릴게요. 중간선거·옵토닉스·서킷브레이커·젠슨 황 원고도 같은 방식으로 바꿀 수 있어요.</div>
+  </div>
+</div>
+
+<script>
+const toast=document.getElementById('toast');
+function show(m){toast.textContent=m;clearTimeout(show.t);show.t=setTimeout(()=>toast.textContent='',2500)}
+function selectEl(el){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r)}
+document.querySelectorAll('button[data-target]').forEach(b=>b.addEventListener('click',()=>{
+  const el=document.getElementById(b.dataset.target);const text=el.innerText.trim();
+  const p=navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(text):Promise.reject();
+  p.then(()=>show('복사됐어요. 블로그에 붙여넣으세요.')).catch(()=>{selectEl(el);show('텍스트를 선택했어요. 길게 눌러 복사하세요.')});
+}));
+</script>
