@@ -1,0 +1,126 @@
+<title>젠슨 황 SNS 키트</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;800&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: single reading column; tool bar on top, chart card, then the copyable manuscript */
+:root{
+  --bg:#f3f7f8; --surface:#ffffff; --fg:#17262b; --muted:#5b6f75; --line:#d5e2e5;
+  --accent:#1f7a8c; --accent-soft:#e1f0f3; --warn:#9a5b12; --bar-other:#b9cdd2;
+  --display:"Noto Serif KR",Georgia,serif; --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1a1d; --surface:#16252a; --fg:#e3eef0; --muted:#97adb3; --line:#2a3e44;
+  --accent:#5cc0d3; --accent-soft:#1b3a41; --warn:#e2a95a; --bar-other:#3b5960; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1a1d; --surface:#16252a; --fg:#e3eef0; --muted:#97adb3; --line:#2a3e44;
+  --accent:#5cc0d3; --accent-soft:#1b3a41; --warn:#e2a95a; --bar-other:#3b5960; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.75;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 64px}
+.wrap{max-width:720px;margin:0 auto;display:grid;gap:20px}
+h1{font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1.35;margin:0;text-wrap:balance}
+.eyebrow{font-size:.75rem;letter-spacing:.08em;color:var(--accent);font-weight:700}
+.lede{color:var(--muted);margin:0}
+.tools{display:flex;flex-wrap:wrap;gap:8px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding-block:10px;z-index:5;border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+button{font:inherit;font-weight:700;font-size:.9rem;border-radius:10px;border:1px solid var(--accent);padding:10px 14px;cursor:pointer;background:var(--surface);color:var(--accent)}
+button.primary{background:var(--accent);color:var(--surface)}
+button:focus-visible{outline:3px solid var(--accent-soft);outline-offset:2px}
+.toast{font-size:.85rem;color:var(--accent);align-self:center;min-height:1.2em}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h2{font-family:var(--display);font-size:1.05rem;margin:0 0 4px}
+.small{font-size:.8rem;color:var(--muted)}
+.bars{display:grid;gap:10px;margin-top:12px}
+.bar-row{display:grid;grid-template-columns:7.5em 1fr;gap:10px;align-items:center;font-size:.85rem}
+.bar-track{position:relative;height:22px}
+.bar{height:100%;background:var(--bar-other);border-radius:0 4px 4px 0;min-width:3px}
+.bar.me{background:var(--accent)}
+.bar-val{position:absolute;top:0;left:calc(var(--w) + 6px);font-variant-numeric:tabular-nums;font-size:.8rem;line-height:22px;white-space:nowrap}
+.bar-row:nth-child(-n+3) .bar-val{left:auto;right:6px;color:var(--fg)}
+.post{white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;font-size:.95rem}
+.post-box{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.copybox{display:grid;gap:8px}
+.copybox .txt{background:var(--accent-soft);border-radius:10px;padding:12px;white-space:pre-wrap;word-break:keep-all}
+.note{border-left:3px solid var(--warn);padding:4px 0 4px 12px;color:var(--muted);font-size:.85rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.grid img{width:100%;border-radius:8px;display:block}
+video{width:100%;max-width:320px;border-radius:12px;display:block}
+.steps{display:grid;gap:10px;font-size:.92rem}
+.steps b{color:var(--accent)}
+table.t{border-collapse:collapse;width:100%;font-size:.88rem}
+table.t td{border-top:1px solid var(--line);padding:8px 6px;vertical-align:top}
+table.t td:first-child{white-space:nowrap;color:var(--muted);font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto}
+</style>
+
+<div class="wrap">
+  <div>
+    <div class="eyebrow">SNS 배포 키트 · 젠슨 황 편 · 11.13 업데이트</div>
+    <h1>젠슨 황 사임, 카드뉴스·쇼츠</h1>
+    <p class="lede">11/12 사임 공시까지 반영한 최신판이에요. 카드뉴스 10장(4:5), 쇼츠 37초(9:16), 캡션·대본, 블로그에 붙일 업데이트 문단까지 들어 있어요.</p>
+  </div>
+  <div class="card"><h2>① 인스타 카드뉴스 10장 · 1080×1350</h2><div class="small">순서대로 한 게시물에 올리고, 비율은 '세로 방향'을 고르세요.</div><div class="grid" style="margin-top:10px"><img src="cards/01.png" alt="카드 1"><img src="cards/02.png" alt="카드 2"><img src="cards/03.png" alt="카드 3"><img src="cards/04.png" alt="카드 4"><img src="cards/05.png" alt="카드 5"><img src="cards/06.png" alt="카드 6"><img src="cards/07.png" alt="카드 7"><img src="cards/08.png" alt="카드 8"><img src="cards/09.png" alt="카드 9"><img src="cards/10.png" alt="카드 10"></div></div>
+  <div class="card"><h2>② 쇼츠·릴스 영상 · 37초</h2><div class="small">무음 영상이에요. 인스타·유튜브 안의 음악을 얹어 올리세요.</div><video src="techgamja_shorts_jensen.mp4" controls playsinline muted style="margin-top:10px"></video></div>
+  <div class="card copybox"><h2>③ 카드뉴스 캡션</h2><div class="txt" id="cap">젠슨 황이 엔비디아를 떠났습니다 📉
+1993년 창업부터 33년을 이끈 CEO의 갑작스러운 사임.
+
+✔ 11/12 CEO·이사직 즉시 사임 (SEC 공시)
+✔ 임시 CEO는 콜레트 크레스 CFO
+✔ 엔비디아 장중 두 자릿수 급락 → 종가 -4.3%
+✔ 그 사이 개미는 삼성전자·SK하이닉스 9조 순매수
+
+진짜 시험대는 11월 17일, CEO 없이 치르는 첫 실적 발표입니다.
+
+📌 카드를 넘겨 보고 저장해 두세요
+📖 목표주가 변화 표까지 담은 전체 분석은 프로필 링크 블로그에서
+
+보도와 회사 공시를 바탕으로 한 개인 의견입니다. 조사 중인 의혹은 확정된 사실이 아니며, 특정 종목의 매수·매도 추천이 아닙니다.</div><button id="b-cap" class="primary" data-target="cap">캡션 복사</button><h2 style="margin-top:8px">해시태그</h2><div class="txt" id="tags">#엔비디아 #젠슨황 #엔비디아주가 #엔비디아실적 #반도체 #반도체주 #삼성전자 #SK하이닉스 #HBM #미국주식 #해외주식 #주식공부 #재테크 #techgamja #테크감자</div><button id="b-tags" data-target="tags">해시태그 복사</button></div>
+  <div class="card copybox"><h2>④ 릴스 캡션 (짧은 버전)</h2><div class="txt" id="reel">젠슨 황이 엔비디아를 떠났습니다 📉
+33년 만의 CEO 교체, 37초 요약!
+
+📖 전체 분석은 프로필 링크 블로그에서
+💊 20년차 현직 제약 MR의 투자 노트
+
+※ 보도·공시 기반 개인 의견이며 투자 추천이 아닙니다.
+
+#엔비디아 #젠슨황 #반도체 #삼성전자 #SK하이닉스 #미국주식 #주식공부 #재테크 #릴스 #테크감자</div><button id="b-reel" data-target="reel">릴스 캡션 복사</button></div>
+  <div class="card copybox"><h2>⑤ 유튜브 쇼츠 제목·설명</h2><div class="txt" id="ytt">젠슨 황 엔비디아 사임, 33년 만의 CEO 교체… 삼전닉스 개미는? #shorts</div><button id="b-ytt" data-target="ytt">제목 복사</button><div class="txt" id="ytd">엔비디아 젠슨 황 CEO 사임, 임시 CEO 콜레트 크레스. 주가 반응과 11/17 실적 체크포인트를 20년차 현직 제약 MR이 정리했습니다.
+전체 분석: 네이버 블로그 '테크감자' https://m.blog.naver.com/techgamja
+※ 보도·공시 기반 개인 의견이며 투자 추천이 아닙니다.
+#엔비디아 #젠슨황 #반도체 #삼성전자 #SK하이닉스 #테크감자</div><button id="b-ytd" data-target="ytd">설명 복사</button></div>
+  <div class="card copybox"><h2>⑥ 내레이션 대본 (선택)</h2><div class="tw"><table class="t"><tr><td>0:00–0:04</td><td>젠슨 황이 엔비디아를 떠났습니다.</td></tr><tr><td>0:04–0:09</td><td>1993년 창업부터 33년 동안 회사를 이끈 CEO의 갑작스러운 사임입니다.</td></tr><tr><td>0:09–0:13</td><td>임시 CEO는 최고재무책임자 콜레트 크레스가 맡았습니다.</td></tr><tr><td>0:13–0:18</td><td>엔비디아 주가는 장중 두 자릿수로 빠졌다가 4.3% 하락으로 마감했고요.</td></tr><tr><td>0:18–0:23</td><td>번스타인은 목표주가를 400달러에서 200달러로, 딱 절반 낮췄습니다.</td></tr><tr><td>0:23–0:28</td><td>그 사이 한국 개미들은 한 달 동안 삼성전자와 SK하이닉스를 9조 원 넘게 샀습니다.</td></tr><tr><td>0:28–0:32</td><td>진짜 시험대는 11월 17일, CEO 없이 치르는 첫 실적 발표입니다.</td></tr><tr><td>0:32–0:37</td><td>전체 분석은 프로필 링크 블로그에서 확인하세요.</td></tr></table></div><div class="txt" id="narr" hidden>젠슨 황이 엔비디아를 떠났습니다.
+1993년 창업부터 33년 동안 회사를 이끈 CEO의 갑작스러운 사임입니다.
+임시 CEO는 최고재무책임자 콜레트 크레스가 맡았습니다.
+엔비디아 주가는 장중 두 자릿수로 빠졌다가 4.3% 하락으로 마감했고요.
+번스타인은 목표주가를 400달러에서 200달러로, 딱 절반 낮췄습니다.
+그 사이 한국 개미들은 한 달 동안 삼성전자와 SK하이닉스를 9조 원 넘게 샀습니다.
+진짜 시험대는 11월 17일, CEO 없이 치르는 첫 실적 발표입니다.
+전체 분석은 프로필 링크 블로그에서 확인하세요.</div><button id="b-narr" data-target="narr">대본 전체 복사</button></div>
+  <div class="card copybox"><h2>⑦ 블로그 원고에 붙일 업데이트 문단</h2><div class="small">아직 블로그에 안 올렸다면 본문 맨 위(인사말 바로 아래)에, 이미 올렸다면 글 수정으로 맨 위에 넣으세요.</div><div class="txt" id="upd">[11월 13일 업데이트] 젠슨 황, 엔비디아 CEO 사임
+
+이 글을 쓴 뒤 상황이 크게 바뀌었습니다.
+
+엔비디아는 11월 12일(현지시간) 미국 증권거래위원회(SEC) 공시를 통해 젠슨 황이 CEO와 이사직에서 즉시 물러난다고 밝혔습니다.
+
+▶ 임시 CEO : 콜레트 크레스 최고재무책임자(CFO)
+▶ 이사회 의장 : 하비 C. 존스 (엔비디아 첫 이사회 의장)
+▶ 정식 CEO : 내부·외부 후보를 모두 놓고 물색 중
+
+엔비디아 주가는 장중 두 자릿수로 급락했다가 4.3% 하락으로 마감했고, 번스타인은 목표주가를 400달러에서 200달러로 절반 낮췄습니다.
+반면 11월 13일 코스피는 장 초반 3% 넘게 오르며 5,500선을 터치했고, 키움증권은 "AI 성장성 훼손, GPU 수요 감소로 연결하지 않는 분위기"라고 분석했습니다.
+
+본문 3번 단락의 '키맨 리스크'가 현실이 됐습니다. 이제 남은 질문은 하나입니다.
+11월 17일, CEO 없이 치르는 첫 실적 발표에서 숫자가 흔들리느냐입니다.</div><button id="b-upd" data-target="upd">업데이트 문단 복사</button></div>
+  <div class="card"><h2>주의할 점</h2><div class="small" style="font-size:.88rem;line-height:1.8">⚠ 실존 인물 관련 콘텐츠예요. 사생활 내용은 넣지 않았고, 의혹은 "보도", "조사 중"으로만 썼어요. 댓글에서도 단정적인 표현은 피하세요.<br>⚠ 11/13 코스피 종가는 매체마다 달라서 장 초반 수치만 썼어요.<br>⚠ 11/17 실적 발표 뒤에는 결과를 담은 후속 카드뉴스를 올리면 유입이 이어져요.</div></div>
+</div>
+
+<script>
+const toast=document.getElementById('toast');
+function show(m){toast.textContent=m;clearTimeout(show.t);show.t=setTimeout(()=>toast.textContent='',2500)}
+function selectEl(el){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r)}
+document.querySelectorAll('button[data-target]').forEach(b=>b.addEventListener('click',()=>{
+  const el=document.getElementById(b.dataset.target);const text=el.innerText.trim();
+  const p=navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(text):Promise.reject();
+  p.then(()=>show('복사됐어요. 블로그에 붙여넣으세요.')).catch(()=>{selectEl(el);show('텍스트를 선택했어요. 길게 눌러 복사하세요.')});
+}));
+</script>
